@@ -4,6 +4,9 @@ import type { NextConfig } from "next";
 // does not support the `headers()` config option in next.config.ts.
 const nextConfig: NextConfig = {
   output: "export",
+  turbopack: {
+    root: process.cwd(),
+  },
   images: {
     unoptimized: true,
   },
