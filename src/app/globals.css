@@ -1,26 +1,77 @@
 @import "tailwindcss";
 
 :root {
+  --icfes-blue: #003b71;
+  --icfes-blue-light: #0056a8;
+  --icfes-blue-lighter: #e8f0fe;
+  --icfes-red: #c41e3a;
+  --icfes-green: #2e7d32;
+  --icfes-yellow: #f9a825;
+  --icfes-gray: #f5f5f5;
+  --icfes-dark: #1a1a2e;
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1a1a2e;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-icfes-blue: var(--icfes-blue);
+  --color-icfes-blue-light: var(--icfes-blue-light);
+  --color-icfes-blue-lighter: var(--icfes-blue-lighter);
+  --color-icfes-red: var(--icfes-red);
+  --color-icfes-green: var(--icfes-green);
+  --color-icfes-yellow: var(--icfes-yellow);
+  --color-icfes-gray: var(--icfes-gray);
+  --color-icfes-dark: var(--icfes-dark);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #003b71 transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+@keyframes pulse-border {
+  0%, 100% { border-color: #003b71; }
+  50% { border-color: #0056a8; }
+}
+
+.pulse-border {
+  animation: pulse-border 2s ease-in-out infinite;
+}
+
+.question-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
 }
