@@ -18,20 +18,20 @@ const metadataBase = siteUrl ? new URL(siteUrl) : undefined;
 
 export const metadata: Metadata = {
   metadataBase,
-  title: "Prep�rate para el ICFES Saber 11� | Pr�ctica Gratuita",
+  title: "Preparate para el ICFES Saber 11 | Practica Gratuita",
   description:
-    "Proyecto educativo independiente y gratuito para prepararte para el examen ICFES Saber 11�. Simulacros, infograf�as y material recopilado de fuentes p�blicas. No afiliado con el ICFES.",
+    "Proyecto educativo independiente y gratuito para prepararte para el examen ICFES Saber 11. Simulacros, infografias y material recopilado de fuentes publicas. No afiliado con el ICFES.",
   keywords: [
     "ICFES",
     "Saber 11",
-    "pr�ctica",
+    "practica",
     "simulacro",
     "Colombia",
-    "matem�ticas",
-    "preparaci�n ICFES",
+    "matematicas",
+    "preparacion ICFES",
     "examen de estado",
   ],
-  authors: [{ name: "Prep�rate ICFES" }],
+  authors: [{ name: "Preparate ICFES" }],
   alternates: {
     canonical: "/",
   },
@@ -44,19 +44,19 @@ export const metadata: Metadata = {
     apple: "/favicon.png",
   },
   openGraph: {
-    title: "Prep�rate para el ICFES Saber 11� | Pr�ctica Gratuita",
+    title: "Preparate para el ICFES Saber 11 | Practica Gratuita",
     description:
-      "Proyecto educativo independiente y gratuito para prepararte para el examen ICFES Saber 11�. Simulacros, infograf�as y material recopilado de fuentes p�blicas.",
+      "Proyecto educativo independiente y gratuito para prepararte para el examen ICFES Saber 11. Simulacros, infografias y material recopilado de fuentes publicas.",
     type: "website",
     locale: "es_CO",
-    siteName: "Prep�rate ICFES",
+    siteName: "Preparate ICFES",
     url: "/",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Prep�rate para el ICFES Saber 11�",
+    title: "Preparate para el ICFES Saber 11",
     description:
-      "Simulacros gratuitos e infograf�as para prepararte para el Saber 11�. Proyecto educativo independiente.",
+      "Simulacros gratuitos e infografias para prepararte para el Saber 11. Proyecto educativo independiente.",
   },
   robots: {
     index: true,
@@ -79,6 +79,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <head>
+        <meta charSet="utf-8" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/favicon.png" type="image/png" />
         <link rel="shortcut icon" href="/favicon.ico" />
