@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import CopyProtection from "@/components/CopyProtection";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,21 +13,28 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://icfes2026.vercel.app";
+const metadataBase = siteUrl ? new URL(siteUrl) : undefined;
+
 export const metadata: Metadata = {
-  title: "Prepárate para el ICFES Saber 11° | Práctica Gratuita",
+  metadataBase,
+  title: "Prep�rate para el ICFES Saber 11� | Pr�ctica Gratuita",
   description:
-    "Proyecto educativo independiente y gratuito para prepararte para el examen ICFES Saber 11°. Simulacros, infografías y material recopilado de fuentes públicas. No afiliado con el ICFES.",
+    "Proyecto educativo independiente y gratuito para prepararte para el examen ICFES Saber 11�. Simulacros, infograf�as y material recopilado de fuentes p�blicas. No afiliado con el ICFES.",
   keywords: [
     "ICFES",
     "Saber 11",
-    "práctica",
+    "pr�ctica",
     "simulacro",
     "Colombia",
-    "matemáticas",
-    "preparación ICFES",
+    "matem�ticas",
+    "preparaci�n ICFES",
     "examen de estado",
   ],
-  authors: [{ name: "Prepárate ICFES" }],
+  authors: [{ name: "Prep�rate ICFES" }],
+  alternates: {
+    canonical: "/",
+  },
   icons: {
     icon: [
       { url: "/favicon.ico", type: "image/x-icon" },
@@ -36,22 +44,30 @@ export const metadata: Metadata = {
     apple: "/favicon.png",
   },
   openGraph: {
-    title: "Prepárate para el ICFES Saber 11° | Práctica Gratuita",
+    title: "Prep�rate para el ICFES Saber 11� | Pr�ctica Gratuita",
     description:
-      "Proyecto educativo independiente y gratuito para prepararte para el examen ICFES Saber 11°. Simulacros, infografías y material recopilado de fuentes públicas.",
+      "Proyecto educativo independiente y gratuito para prepararte para el examen ICFES Saber 11�. Simulacros, infograf�as y material recopilado de fuentes p�blicas.",
     type: "website",
     locale: "es_CO",
-    siteName: "Prepárate ICFES",
+    siteName: "Prep�rate ICFES",
+    url: "/",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Prepárate para el ICFES Saber 11°",
+    title: "Prep�rate para el ICFES Saber 11�",
     description:
-      "Simulacros gratuitos e infografías para prepararte para el Saber 11°. Proyecto educativo independiente.",
+      "Simulacros gratuitos e infograf�as para prepararte para el Saber 11�. Proyecto educativo independiente.",
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
 };
 
@@ -71,6 +87,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <CopyProtection />
         {children}
       </body>
     </html>

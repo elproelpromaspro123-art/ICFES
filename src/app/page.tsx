@@ -1,12 +1,33 @@
-import Navbar from "@/components/Navbar";
+﻿import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import InfografiaSection from "@/components/InfografiaSection";
 import SimulacroSection from "@/components/SimulacroSection";
 import Footer from "@/components/Footer";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://icfes2026.vercel.app";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Prep�rate ICFES",
+  url: siteUrl,
+  description:
+    "Proyecto educativo independiente y gratuito para prepararte para el examen ICFES Saber 11�. Simulacros, infograf�as y material recopilado de fuentes p�blicas.",
+  inLanguage: "es-CO",
+  publisher: {
+    "@type": "Organization",
+    name: "Prep�rate ICFES",
+  },
+  isAccessibleForFree: true,
+};
+
 export default function Home() {
   return (
     <main className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Navbar />
       <Hero />
       <InfografiaSection />
