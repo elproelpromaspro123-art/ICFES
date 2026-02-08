@@ -23,6 +23,29 @@ interface Props {
   randomize: boolean;
 }
 
+type SimulacroProgress = {
+  questionCount: number;
+  randomize: boolean;
+  order: number[];
+  answers: Record<number, string>;
+  currentIndex: number;
+  elapsed: number;
+  startedAt: string;
+};
+
+type SimulacroHistoryEntry = {
+  id: string;
+  date: string;
+  questionCount: number;
+  randomize: boolean;
+  score: number;
+  correct: number;
+  incorrect: number;
+  elapsed: number;
+};
+
+const HISTORY_KEY = "icfes_simulacro_history";
+
 function shuffleArray<T>(arr: T[]): T[] {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -60,7 +83,8 @@ function getScoreLabel(score: number): string {
   return "Necesitas mejorar";
 }
 
-const fractionRegex = /([A-Za-zÁÉÍÓÚÑáéíóúñ0-9]+)\/([A-Za-zÁÉÍÓÚÑáéíóúñ0-9]+)/g;
+const fractionRegex =
+  /([A-Za-zÁÉÍÓÚÑáéíóúñ0-9()°.,√·-]+)\/([A-Za-zÁÉÍÓÚÑáéíóúñ0-9()°.,√·-]+)/g;
 
 function applyAutoBold(line: string): string {
   if (line.includes("**")) return line;
@@ -80,6 +104,15 @@ function applyAutoBold(line: string): string {
     }
   }
   return output;
+}
+
+function normalizeParagraphs(text: string): string[] {
+  return text
+    .split(/\n\s*\n/g)
+    .map((paragraph) =>
+      paragraph.replace(/\n+/g, " ").replace(/\s+/g, " ").trim()
+    )
+    .filter(Boolean);
 }
 
 function renderFractions(text: string, keyBase: string): ReactNode[] {
@@ -124,24 +157,26 @@ function renderBoldAndFractions(text: string, keyBase: string): ReactNode[] {
 }
 
 function renderFormattedText(text: string, keyBase: string): ReactNode {
-  const lines = text.split("\n");
-  return lines.map((line, index) => {
-    const formattedLine = applyAutoBold(line);
+  const paragraphs = normalizeParagraphs(text);
+  return paragraphs.map((paragraph, index) => {
+    const formattedLine = applyAutoBold(paragraph);
     return (
-      <span key={`${keyBase}-line-${index}`}>
+      <p key={`${keyBase}-p-${index}`} className="leading-relaxed">
         {renderBoldAndFractions(formattedLine, `${keyBase}-l-${index}`)}
-        {index < lines.length - 1 ? <br /> : null}
-      </span>
+      </p>
     );
   });
 }
 
 export default function SimulacroExam({ questionCount, randomize }: Props) {
-  const questions = useMemo(() => {
-    let qs = [...mathQuestions];
-    if (randomize) qs = shuffleArray(qs);
-    return qs.slice(0, questionCount);
-  }, [questionCount, randomize]);
+  const progressKey = useMemo(
+    () =>
+      `icfes_simulacro_progress_${questionCount}_${randomize ? "rand" : "fixed"}`,
+    [questionCount, randomize]
+  );
+
+  const [questionOrder, setQuestionOrder] = useState<number[] | null>(null);
+  const [hydrated, setHydrated] = useState(false);
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<number, string>>({});
@@ -150,10 +185,77 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
   const [showConfirm, setShowConfirm] = useState(false);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+    const raw = localStorage.getItem(progressKey);
+    if (raw) {
+      try {
+        const data = JSON.parse(raw) as SimulacroProgress;
+        if (
+          data &&
+          Array.isArray(data.order) &&
+          typeof data.currentIndex === "number"
+        ) {
+          setQuestionOrder(data.order);
+          setAnswers(data.answers || {});
+          setCurrentIndex(data.currentIndex || 0);
+          setElapsed(data.elapsed || 0);
+          setHydrated(true);
+          return;
+        }
+      } catch {
+        // ignore malformed data
+      }
+    }
+    const base = randomize ? shuffleArray(mathQuestions) : [...mathQuestions];
+    const order = base.slice(0, questionCount).map((q) => q.id);
+    setQuestionOrder(order);
+    setHydrated(true);
+  }, [progressKey, questionCount, randomize]);
+
+  const questions = useMemo(() => {
+    if (!questionOrder) return [];
+    const lookup = new Map(mathQuestions.map((q) => [q.id, q]));
+    return questionOrder
+      .map((id) => lookup.get(id))
+      .filter(Boolean) as Question[];
+  }, [questionOrder]);
+
+  useEffect(() => {
+    if (!hydrated || finished || !questionOrder) return;
+    const payload: SimulacroProgress = {
+      questionCount,
+      randomize,
+      order: questionOrder,
+      answers,
+      currentIndex,
+      elapsed,
+      startedAt: new Date().toISOString(),
+    };
+    localStorage.setItem(progressKey, JSON.stringify(payload));
+  }, [
+    hydrated,
+    finished,
+    questionOrder,
+    answers,
+    currentIndex,
+    elapsed,
+    progressKey,
+    questionCount,
+    randomize,
+  ]);
+
+  useEffect(() => {
     if (finished) return;
     const interval = setInterval(() => setElapsed((e) => e + 1), 1000);
     return () => clearInterval(interval);
   }, [finished]);
+
+  useEffect(() => {
+    if (questions.length === 0) return;
+    if (currentIndex > questions.length - 1) {
+      setCurrentIndex(0);
+    }
+  }, [questions.length, currentIndex]);
 
   const selectAnswer = useCallback(
     (questionId: number, letter: string) => {
@@ -164,6 +266,37 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
   );
 
   const handleFinish = () => {
+    const total = questions.length;
+    const correct = questions.filter(
+      (q) => answers[q.id] === q.correctAnswer
+    ).length;
+    const scoreValue = calculateScore(correct, total);
+    const entry: SimulacroHistoryEntry = {
+      id:
+        (typeof crypto !== "undefined" &&
+          "randomUUID" in crypto &&
+          crypto.randomUUID()) ||
+        `${Date.now()}`,
+      date: new Date().toISOString(),
+      questionCount,
+      randomize,
+      score: scoreValue,
+      correct,
+      incorrect: total - correct,
+      elapsed,
+    };
+    try {
+      const raw = localStorage.getItem(HISTORY_KEY);
+      const history = raw ? (JSON.parse(raw) as SimulacroHistoryEntry[]) : [];
+      history.unshift(entry);
+      localStorage.setItem(
+        HISTORY_KEY,
+        JSON.stringify(history.slice(0, 50))
+      );
+      localStorage.removeItem(progressKey);
+    } catch {
+      // ignore storage issues
+    }
     setFinished(true);
     setShowConfirm(false);
   };
@@ -173,6 +306,16 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
   ).length;
   const answeredCount = Object.keys(answers).length;
   const score = calculateScore(correctCount, questions.length);
+
+  if (!hydrated || questions.length === 0) {
+    return (
+      <div className="min-h-screen bg-icfes-gray flex items-center justify-center px-4">
+        <div className="bg-white border rounded-2xl shadow-sm px-6 py-5 text-sm text-gray-600">
+          Preparando simulacro...
+        </div>
+      </div>
+    );
+  }
 
   const currentQ = questions[currentIndex];
   const lastSharedImage =
@@ -301,9 +444,9 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
                             : "Sin responder"}
                         </span>
                       </div>
-                      <p className="text-base text-gray-700 leading-relaxed mb-3">
+                      <div className="space-y-2 text-base text-gray-700 mb-3">
                         {renderFormattedText(q.text, `review-q-${q.id}`)}
-                      </p>
+                      </div>
 
                       {q.groupLabel && (
                         <div className="bg-icfes-blue-lighter border border-icfes-blue/20 rounded-lg p-3 mb-3">
@@ -311,9 +454,9 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
                             {q.groupLabel}
                           </p>
                           {q.groupText && (
-                            <p className="text-sm text-gray-700 leading-relaxed">
+                            <div className="space-y-2 text-sm text-gray-700">
                               {renderFormattedText(q.groupText, `review-gt-${q.id}`)}
-                            </p>
+                            </div>
                           )}
                         </div>
                       )}
@@ -374,7 +517,12 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
                               <span className="font-bold shrink-0 mt-0.5">
                                 {opt.letter}.
                               </span>
-                              <span>{renderFormattedText(opt.text, `review-opt-${q.id}-${opt.letter}`)}</span>
+                              <div className="space-y-1">
+                                {renderFormattedText(
+                                  opt.text,
+                                  `review-opt-${q.id}-${opt.letter}`
+                                )}
+                              </div>
                               {isRightAnswer && (
                                 <CheckCircle2 className="w-4 h-4 text-green-500 shrink-0 ml-auto mt-0.5" />
                               )}
@@ -390,9 +538,9 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
                         <p className="text-xs font-semibold text-icfes-blue mb-1">
                           Explicación:
                         </p>
-                        <p className="text-sm text-gray-700 leading-relaxed">
+                        <div className="space-y-2 text-sm text-gray-700">
                           {renderFormattedText(q.explanation, `review-exp-${q.id}`)}
-                        </p>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -514,9 +662,9 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
                   {currentQ.groupLabel}
                 </p>
                 {currentQ.groupText && (
-                  <p className="text-sm text-gray-700 leading-relaxed mb-3">
+                  <div className="space-y-2 text-sm text-gray-700 mb-3">
                     {renderFormattedText(currentQ.groupText, `main-gt-${currentQ.id}`)}
-                  </p>
+                  </div>
                 )}
                 {currentQ.sharedImage && (
                   <Image
@@ -537,9 +685,12 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
                 </summary>
                 <div className="mt-3">
                   {currentQ.groupText && (
-                    <p className="text-sm text-gray-700 leading-relaxed mb-3">
-                      {renderFormattedText(currentQ.groupText, `main-gt-${currentQ.id}-details`)}
-                    </p>
+                    <div className="space-y-2 text-sm text-gray-700 mb-3">
+                      {renderFormattedText(
+                        currentQ.groupText,
+                        `main-gt-${currentQ.id}-details`
+                      )}
+                    </div>
                   )}
                   <Image
                     src={currentQ.sharedImage}
@@ -557,9 +708,9 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
                 <span className="shrink-0 w-8 h-8 rounded-full bg-icfes-blue text-white flex items-center justify-center text-sm font-bold">
                   {currentIndex + 1}
                 </span>
-                <p className="text-base sm:text-lg text-gray-800 leading-relaxed flex-1">
+                <div className="space-y-2 text-base sm:text-lg text-gray-800 flex-1">
                   {renderFormattedText(currentQ.text, `main-q-${currentQ.id}`)}
-                </p>
+                </div>
               </div>
 
               {currentQ.image && (
@@ -608,9 +759,12 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
                       >
                         {opt.letter}
                       </span>
-                      <span className="pt-0.5">
-                        {renderFormattedText(opt.text, `main-opt-${currentQ.id}-${opt.letter}`)}
-                      </span>
+                      <div className="pt-0.5 space-y-1">
+                        {renderFormattedText(
+                          opt.text,
+                          `main-opt-${currentQ.id}-${opt.letter}`
+                        )}
+                      </div>
                     </button>
                   );
                 })}

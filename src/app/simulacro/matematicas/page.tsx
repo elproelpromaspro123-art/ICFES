@@ -1,6 +1,6 @@
-"use client";
+﻿"use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Calculator,
@@ -10,11 +10,36 @@ import {
   Play,
   CheckCircle2,
   ListChecks,
+  History,
+  RotateCcw,
 } from "lucide-react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SimulacroExam from "@/components/SimulacroExam";
+
+type SimulacroProgress = {
+  questionCount: number;
+  randomize: boolean;
+  order: number[];
+  answers: Record<number, string>;
+  currentIndex: number;
+  elapsed: number;
+  startedAt: string;
+};
+
+type SimulacroHistoryEntry = {
+  id: string;
+  date: string;
+  questionCount: number;
+  randomize: boolean;
+  score: number;
+  correct: number;
+  incorrect: number;
+  elapsed: number;
+};
+
+const HISTORY_KEY = "icfes_simulacro_history";
 
 const modes = [
   { label: "Solo 10 preguntas", count: 10, icon: "⚡" },
@@ -29,6 +54,35 @@ export default function SimulacroMatematicas() {
   const [randomize, setRandomize] = useState(false);
   const [started, setStarted] = useState(false);
   const [showIntro, setShowIntro] = useState(false);
+  const [progressMap, setProgressMap] = useState<
+    Record<number, SimulacroProgress | null>
+  >({});
+  const [history, setHistory] = useState<SimulacroHistoryEntry[]>([]);
+
+  const makeProgressKey = useMemo(
+    () =>
+      (count: number) =>
+        `icfes_simulacro_progress_${count}_${randomize ? "rand" : "fixed"}`,
+    [randomize]
+  );
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const nextMap: Record<number, SimulacroProgress | null> = {};
+    for (const mode of modes) {
+      const raw = localStorage.getItem(makeProgressKey(mode.count));
+      nextMap[mode.count] = raw ? (JSON.parse(raw) as SimulacroProgress) : null;
+    }
+    setProgressMap(nextMap);
+  }, [makeProgressKey]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const raw = localStorage.getItem(HISTORY_KEY);
+    const items = raw ? (JSON.parse(raw) as SimulacroHistoryEntry[]) : [];
+    items.sort((a, b) => (a.date > b.date ? -1 : 1));
+    setHistory(items);
+  }, []);
 
   const handleStart = (count: number) => {
     setSelectedMode(count);
@@ -39,6 +93,14 @@ export default function SimulacroMatematicas() {
     setShowIntro(false);
     setStarted(true);
   };
+
+  const clearProgress = (count: number) => {
+    if (typeof window === "undefined") return;
+    localStorage.removeItem(makeProgressKey(count));
+    setProgressMap((prev) => ({ ...prev, [count]: null }));
+  };
+
+  const selectedProgress = selectedMode ? progressMap[selectedMode] : null;
 
   if (started && selectedMode) {
     return (
@@ -93,6 +155,17 @@ export default function SimulacroMatematicas() {
                   </p>
                 </div>
 
+                {selectedProgress && (
+                  <div className="bg-yellow-50 border border-yellow-200 rounded-xl px-4 py-3 text-sm text-yellow-900 mb-5">
+                    <p className="font-semibold">
+                      Simulacro en progreso (pendiente)
+                    </p>
+                    <p className="text-xs text-yellow-800">
+                      Puedes continuar donde lo dejaste o reiniciar desde cero.
+                    </p>
+                  </div>
+                )}
+
                 <div className="flex items-center justify-center gap-6 mb-6 text-sm">
                   <div className="flex items-center gap-2 text-gray-600">
                     <ListChecks className="w-4 h-4 text-icfes-blue" />
@@ -121,13 +194,35 @@ export default function SimulacroMatematicas() {
                   >
                     Volver
                   </button>
-                  <button
-                    onClick={handleBegin}
-                    className="flex-1 py-3 rounded-xl bg-icfes-blue text-white font-semibold hover:bg-icfes-blue-light transition-colors flex items-center justify-center gap-2"
-                  >
-                    <Play className="w-4 h-4" />
-                    Empezar
-                  </button>
+                  {selectedProgress ? (
+                    <div className="flex-1 flex gap-2">
+                      <button
+                        onClick={() => {
+                          if (selectedMode) clearProgress(selectedMode);
+                          handleBegin();
+                        }}
+                        className="flex-1 py-3 rounded-xl border-2 border-icfes-blue text-icfes-blue font-semibold hover:bg-icfes-blue-lighter transition-colors flex items-center justify-center gap-2"
+                      >
+                        <RotateCcw className="w-4 h-4" />
+                        Reiniciar
+                      </button>
+                      <button
+                        onClick={handleBegin}
+                        className="flex-1 py-3 rounded-xl bg-icfes-blue text-white font-semibold hover:bg-icfes-blue-light transition-colors flex items-center justify-center gap-2"
+                      >
+                        <Play className="w-4 h-4" />
+                        Continuar
+                      </button>
+                    </div>
+                  ) : (
+                    <button
+                      onClick={handleBegin}
+                      className="flex-1 py-3 rounded-xl bg-icfes-blue text-white font-semibold hover:bg-icfes-blue-light transition-colors flex items-center justify-center gap-2"
+                    >
+                      <Play className="w-4 h-4" />
+                      Empezar
+                    </button>
+                  )}
                 </div>
               </div>
             </motion.div>
@@ -156,7 +251,7 @@ export default function SimulacroMatematicas() {
             Simulacro de Matemáticas
           </h1>
           <p className="text-gray-500 text-sm">
-            50 preguntas verificadas y revisadas del examen Saber 11°
+            50 preguntas verificadas y revisadas del examen Saber 11.°
           </p>
         </motion.div>
 
@@ -186,6 +281,11 @@ export default function SimulacroMatematicas() {
                       {Math.round((mode.count / 50) * 100)}% del simulacro
                       completo
                     </p>
+                    {progressMap[mode.count] && (
+                      <p className="text-xs font-semibold text-icfes-yellow mt-1">
+                        Simulacro en progreso (pendiente)
+                      </p>
+                    )}
                   </div>
                 </div>
               </button>
@@ -193,7 +293,7 @@ export default function SimulacroMatematicas() {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <Shuffle className="w-5 h-5 text-icfes-blue" />
@@ -219,6 +319,51 @@ export default function SimulacroMatematicas() {
               />
             </button>
           </div>
+        </div>
+
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+          <div className="flex items-center gap-2 mb-4">
+            <History className="w-5 h-5 text-icfes-blue" />
+            <h2 className="font-bold text-gray-900">Historial de simulacros</h2>
+          </div>
+          {history.length === 0 ? (
+            <p className="text-sm text-gray-500">
+              Aún no tienes simulacros finalizados.
+            </p>
+          ) : (
+            <div className="space-y-3">
+              {history.map((item) => (
+                <div
+                  key={item.id}
+                  className="border border-gray-200 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
+                >
+                  <div>
+                    <p className="text-sm font-semibold text-gray-800">
+                      {item.questionCount} preguntas ·{" "}
+                      {item.randomize ? "Aleatorizado" : "Orden normal"}
+                    </p>
+                    <p className="text-xs text-gray-500">
+                      {new Date(item.date).toLocaleString("es-CO")}
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap gap-3 text-xs text-gray-600">
+                    <span className="px-2 py-1 rounded-lg bg-icfes-blue-lighter text-icfes-blue font-semibold">
+                      Puntaje: {item.score}
+                    </span>
+                    <span className="px-2 py-1 rounded-lg bg-green-50 text-green-600 font-semibold">
+                      Correctas: {item.correct}
+                    </span>
+                    <span className="px-2 py-1 rounded-lg bg-red-50 text-red-600 font-semibold">
+                      Incorrectas: {item.incorrect}
+                    </span>
+                    <span className="px-2 py-1 rounded-lg bg-gray-100 text-gray-600 font-semibold">
+                      Tiempo: {Math.floor(item.elapsed / 60)}m
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 
