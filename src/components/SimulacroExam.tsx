@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo, useCallback } from "react";
+import { useState, useEffect, useMemo, useCallback, type ReactNode } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -58,6 +58,82 @@ function getScoreLabel(score: number): string {
   if (score >= 60) return "Bueno";
   if (score >= 40) return "Aceptable";
   return "Necesitas mejorar";
+}
+
+const fractionRegex = /([A-Za-zÁÉÍÓÚÑáéíóúñ0-9]+)\/([A-Za-zÁÉÍÓÚÑáéíóúñ0-9]+)/g;
+
+function applyAutoBold(line: string): string {
+  if (line.includes("**")) return line;
+  const patterns = [
+    /^(Paso \d+\.)/,
+    /^(Procedimiento \d+\.)/,
+    /^(Requerimiento \d+\.)/,
+    /^(Ecuación \d+\.)/,
+    /^(Restricción [A-Z0-9]+:)/,
+    /^(Juego \d+\.)/,
+    /^(Recuerde que:)/,
+  ];
+  let output = line;
+  for (const pattern of patterns) {
+    if (pattern.test(output)) {
+      output = output.replace(pattern, "**$1**");
+    }
+  }
+  return output;
+}
+
+function renderFractions(text: string, keyBase: string): ReactNode[] {
+  const parts: ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  let count = 0;
+  const regex = new RegExp(fractionRegex);
+  while ((match = regex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(text.slice(lastIndex, match.index));
+    }
+    parts.push(
+      <span className="fraction" key={`${keyBase}-frac-${count}`}>
+        <span className="fraction-top">{match[1]}</span>
+        <span className="fraction-bar" />
+        <span className="fraction-bottom">{match[2]}</span>
+      </span>
+    );
+    lastIndex = match.index + match[0].length;
+    count += 1;
+  }
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
+  return parts;
+}
+
+function renderBoldAndFractions(text: string, keyBase: string): ReactNode[] {
+  const segments = text.split(/\*\*(.*?)\*\*/g);
+  return segments.map((segment, i) => {
+    const content = renderFractions(segment, `${keyBase}-${i}`);
+    if (i % 2 === 1) {
+      return (
+        <strong key={`${keyBase}-b-${i}`} className="font-semibold text-gray-900">
+          {content}
+        </strong>
+      );
+    }
+    return <span key={`${keyBase}-t-${i}`}>{content}</span>;
+  });
+}
+
+function renderFormattedText(text: string, keyBase: string): ReactNode {
+  const lines = text.split("\n");
+  return lines.map((line, index) => {
+    const formattedLine = applyAutoBold(line);
+    return (
+      <span key={`${keyBase}-line-${index}`}>
+        {renderBoldAndFractions(formattedLine, `${keyBase}-l-${index}`)}
+        {index < lines.length - 1 ? <br /> : null}
+      </span>
+    );
+  });
 }
 
 export default function SimulacroExam({ questionCount, randomize }: Props) {
@@ -225,18 +301,18 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
                             : "Sin responder"}
                         </span>
                       </div>
-                      <p className="text-sm text-gray-700 whitespace-pre-line mb-3">
-                        {q.text}
+                      <p className="text-base text-gray-700 leading-relaxed mb-3">
+                        {renderFormattedText(q.text, `review-q-${q.id}`)}
                       </p>
 
                       {q.groupLabel && (
                         <div className="bg-icfes-blue-lighter border border-icfes-blue/20 rounded-lg p-3 mb-3">
-                          <p className="text-xs font-semibold text-icfes-blue uppercase mb-2">
+                          <p className="text-sm sm:text-base font-semibold text-icfes-blue uppercase mb-2">
                             {q.groupLabel}
                           </p>
                           {q.groupText && (
-                            <p className="text-xs text-gray-700 whitespace-pre-line">
-                              {q.groupText}
+                            <p className="text-sm text-gray-700 leading-relaxed">
+                              {renderFormattedText(q.groupText, `review-gt-${q.id}`)}
                             </p>
                           )}
                         </div>
@@ -298,7 +374,7 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
                               <span className="font-bold shrink-0 mt-0.5">
                                 {opt.letter}.
                               </span>
-                              <span>{opt.text}</span>
+                              <span>{renderFormattedText(opt.text, `review-opt-${q.id}-${opt.letter}`)}</span>
                               {isRightAnswer && (
                                 <CheckCircle2 className="w-4 h-4 text-green-500 shrink-0 ml-auto mt-0.5" />
                               )}
@@ -314,8 +390,8 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
                         <p className="text-xs font-semibold text-icfes-blue mb-1">
                           Explicación:
                         </p>
-                        <p className="text-sm text-gray-700">
-                          {q.explanation}
+                        <p className="text-sm text-gray-700 leading-relaxed">
+                          {renderFormattedText(q.explanation, `review-exp-${q.id}`)}
                         </p>
                       </div>
                     </div>
@@ -434,12 +510,12 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
           >
             {currentQ.groupLabel && showSharedImage && (
               <div className="bg-icfes-blue-lighter border-2 border-icfes-blue/20 rounded-xl p-4 mb-4">
-                <p className="text-xs font-semibold text-icfes-blue uppercase mb-3">
+                <p className="text-sm sm:text-base font-semibold text-icfes-blue uppercase mb-3">
                   {currentQ.groupLabel}
                 </p>
                 {currentQ.groupText && (
-                  <p className="text-xs text-gray-700 whitespace-pre-line mb-3">
-                    {currentQ.groupText}
+                  <p className="text-sm text-gray-700 leading-relaxed mb-3">
+                    {renderFormattedText(currentQ.groupText, `main-gt-${currentQ.id}`)}
                   </p>
                 )}
                 {currentQ.sharedImage && (
@@ -456,13 +532,13 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
 
             {currentQ.groupLabel && !showSharedImage && currentQ.sharedImage && (
               <details className="bg-icfes-blue-lighter border-2 border-icfes-blue/20 rounded-xl p-4 mb-4">
-                <summary className="text-xs font-semibold text-icfes-blue uppercase cursor-pointer">
+                <summary className="text-sm sm:text-base font-semibold text-icfes-blue uppercase cursor-pointer">
                   {currentQ.groupLabel} (clic para ver la información)
                 </summary>
                 <div className="mt-3">
                   {currentQ.groupText && (
-                    <p className="text-xs text-gray-700 whitespace-pre-line mb-3">
-                      {currentQ.groupText}
+                    <p className="text-sm text-gray-700 leading-relaxed mb-3">
+                      {renderFormattedText(currentQ.groupText, `main-gt-${currentQ.id}-details`)}
                     </p>
                   )}
                   <Image
@@ -481,8 +557,8 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
                 <span className="shrink-0 w-8 h-8 rounded-full bg-icfes-blue text-white flex items-center justify-center text-sm font-bold">
                   {currentIndex + 1}
                 </span>
-                <p className="text-sm sm:text-base text-gray-800 whitespace-pre-line leading-relaxed flex-1">
-                  {currentQ.text}
+                <p className="text-base sm:text-lg text-gray-800 leading-relaxed flex-1">
+                  {renderFormattedText(currentQ.text, `main-q-${currentQ.id}`)}
                 </p>
               </div>
 
@@ -532,7 +608,9 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
                       >
                         {opt.letter}
                       </span>
-                      <span className="pt-0.5">{opt.text}</span>
+                      <span className="pt-0.5">
+                        {renderFormattedText(opt.text, `main-opt-${currentQ.id}-${opt.letter}`)}
+                      </span>
                     </button>
                   );
                 })}

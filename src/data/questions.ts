@@ -30,7 +30,7 @@ export const mathQuestions: Question[] = [
       },
       {
         "letter": "D",
-        "text": "II y III solamente. Módulo de                                                                                                     x"
+        "text": "II y III solamente."
       }
     ],
     "correctAnswer": "A",
@@ -131,7 +131,7 @@ export const mathQuestions: Question[] = [
       },
       {
         "letter": "D",
-        "text": "$900.000 Módulo de                                                                                                            x"
+        "text": "$900.000"
       }
     ],
     "correctAnswer": "B",
@@ -169,7 +169,7 @@ export const mathQuestions: Question[] = [
   },
   {
     "id": 7,
-    "text": "La figura muestra el portalápices de Eliécer. Él sabe que es posible colocar un caucho de 18 cm\nde perímetro alrededor de la base sin estirarlo, pero a medida que sube el caucho por el\nportalápices, este se estira hasta que, en la boca del portalápices, su perímetro es 24 cm.\nCaucho estirado, en la\nboca del portalápices.\nCaucho sin estirar, en\nla base del portalápices.\nEl portalápices tiene base y boca cuadrada, por lo cual Eliécer afirma: “Como los perímetros\n18     3\nde la base y la boca del portalápices están en relación 24 = 4 , el área de la base debe\nser también tres cuartas partes del área de la boca del portalápices”. ¿Es verdadera esta\nafirmación?",
+    "text": "La figura muestra el portalápices de Eliécer. Él sabe que es posible colocar un caucho de 18 cm\nde perímetro alrededor de la base sin estirarlo, pero a medida que sube el caucho por el\nportalápices, este se estira hasta que, en la boca del portalápices, su perímetro es 24 cm.\nEl portalápices tiene base y boca cuadrada, por lo cual Eliécer afirma: “Como los perímetros\nde la base y la boca del portalápices están en relación 18/24 = 3/4, el área de la base debe\nser también tres cuartas partes del área de la boca del portalápices”. ¿Es verdadera esta\nafirmación?",
     "options": [
       {
         "letter": "A",
@@ -198,15 +198,15 @@ export const mathQuestions: Question[] = [
     "options": [
       {
         "letter": "A",
-        "text": "Temperatura = Altitud/100 + 10"
+        "text": "Temperatura = (Altitud/100) + 10"
       },
       {
         "letter": "B",
-        "text": "Temperatura = – Altitud × 100 + 30"
+        "text": "Temperatura = − Altitud × 100 + 30"
       },
       {
         "letter": "C",
-        "text": "Temperatura = – Altitud/100 + 30"
+        "text": "Temperatura = −(Altitud/100) + 30"
       },
       {
         "letter": "D",
@@ -234,7 +234,7 @@ export const mathQuestions: Question[] = [
       },
       {
         "letter": "D",
-        "text": "el dinero total gastado en empleados y transporte es mayor en la ciudad W que en la ciudad Z. Módulo de                                                                                                x"
+        "text": "el dinero total gastado en empleados y transporte es mayor en la ciudad W que en la ciudad Z."
       }
     ],
     "correctAnswer": "C",
@@ -343,7 +343,7 @@ export const mathQuestions: Question[] = [
       },
       {
         "letter": "D",
-        "text": "el número mínimo de viajes que se realizaron desde el pueblo. Módulo de                                                                                                       x"
+        "text": "el número mínimo de viajes que se realizaron desde el pueblo."
       }
     ],
     "correctAnswer": "D",
@@ -378,7 +378,7 @@ export const mathQuestions: Question[] = [
   },
   {
     "id": 15,
-    "text": "Un asteroide pasa cerca de un planeta y la fuerza gravitacional que este produce afecta la\ntrayectoria del asteroide, de forma que se describe mediante una parábola. Un astrónomo\nconoce las coordenadas de dos puntos, M y N, por los cuales pasó el asteroide y elaboró esta\ngráfica.\nPrimera posición                         Segunda posición\nobservada                                observada\ndel asteroide          Planeta           del asteroide\nM             N\nSi se necesita hallar los valores a, b y c que describen la ecuación de la parábola y = ax2 + bx + c,\n¿qué información adicional se debe conocer?",
+    "text": "Un asteroide pasa cerca de un planeta y la fuerza gravitacional que este produce afecta la\ntrayectoria del asteroide, de forma que se describe mediante una parábola. Un astrónomo\nconoce las coordenadas de dos puntos, M y N, por los cuales pasó el asteroide y elaboró esta\ngráfica.\nSi se necesita hallar los valores a, b y c que describen la ecuación de la parábola y = ax² + bx + c,\n¿qué información adicional se debe conocer?",
     "options": [
       {
         "letter": "A",
@@ -435,7 +435,7 @@ export const mathQuestions: Question[] = [
       },
       {
         "letter": "B",
-        "text": "¥RST"
+        "text": "√(RST)"
       },
       {
         "letter": "C",
@@ -443,7 +443,7 @@ export const mathQuestions: Question[] = [
       },
       {
         "letter": "D",
-        "text": "RS ¥\u0003T Módulo de                                                                                               x"
+        "text": "√(RS / T)"
       }
     ],
     "correctAnswer": "D",
@@ -451,7 +451,7 @@ export const mathQuestions: Question[] = [
   },
   {
     "id": 18,
-    "text": "Un barco navega entre dos faros, ubicados en la parte inferior de la figura.\nFaro superior\n45º 45º\n1\n30º                              75º      60º\n2\nEn el instante en que el ángulo formado entre el barco, el faro superior y cualquiera de los\notros faros es de 45°, ¿cuál es la distancia x entre el faro superior y el barco?\n2 sen(30º)",
+    "text": "Un barco navega entre dos faros, ubicados en la parte inferior de la figura.\nEn el instante en que el ángulo formado entre el barco, el faro superior y cualquiera de los otros\nfaros es de 45°, ¿cuál es la distancia x entre el faro superior y el barco?",
     "options": [
       {
         "letter": "A",
@@ -541,7 +541,7 @@ export const mathQuestions: Question[] = [
       },
       {
         "letter": "D",
-        "text": "Sí, porque al solucionar las dos ecuaciones se obtiene un número entero, lo cual es consistente con las condiciones iniciales del problema. Módulo de                                                                                                        x"
+        "text": "Sí, porque al solucionar las dos ecuaciones se obtiene un número entero, lo cual es consistente con las condiciones iniciales del problema."
       }
     ],
     "correctAnswer": "A",
@@ -549,7 +549,7 @@ export const mathQuestions: Question[] = [
   },
   {
     "id": 22,
-    "text": "La línea punteada en la figura muestra un corte realizado a un triángulo. El corte es paralelo\na la base y corta por la mitad a la altura que es perpendicular a la base.\nh ;\nPara realizar el corte, se determinó la altura del triángulo usando la fórmula sen(45°) = 120\nluego se dividió h entre dos. Realizando este procedimiento, y teniendo en cuenta que\n¥\u0015\nVHQ \u0017\u0018 \u0003 \u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003§\u0003\u0013\u000f\u001a\u0014\u000f\u0003OD\u0003GLVWDQFLD\u0003D\u0003OD\u0003TXH\u0003VH\u0003FRUWy\u0003OD\u0003DOWXUD\u0003GHO\u0003WULiQJXOR\u0003IXH\u000f\u0003DSUR[LPDGDPHQWH\u000f\n2",
+    "text": "La línea punteada en la figura muestra un corte realizado a un triángulo. El corte es paralelo\na la base y corta por la mitad a la altura que es perpendicular a la base.\nPara realizar el corte, se determinó la altura del triángulo usando la fórmula sen(45°) = h/120;\nluego se dividió h entre dos. Realizando este procedimiento, y teniendo en cuenta que\nsen(45°) = √2/2 ≈ 0,71, la distancia a la que se cortó la altura del triángulo fue, aproximadamente,",
     "options": [
       {
         "letter": "A",
@@ -574,7 +574,7 @@ export const mathQuestions: Question[] = [
   },
   {
     "id": 23,
-    "text": "Un cartabón es una plantilla que se utiliza en dibujo técnico y que tiene forma de triángulo\nrectángulo escaleno, de modo que su hipotenusa mide el doble del cateto de menor longitud.\nSi el cateto más largo de un cartabón mide 32 centímetros, como muestra la figura, ¿cuál de\nlas siguientes medidas corresponde a su cateto menor?",
+    "text": "Un cartabón es una plantilla que se utiliza en dibujo técnico y que tiene forma de triángulo\nrectángulo escaleno, de modo que su hipotenusa mide el doble del cateto de menor longitud.\nRecuerde que:\nsen 30° = 1/2; sen 60° = √3/2\ncos 30° = √3/2; cos 60° = 1/2\ntan 30° = 1/√3; tan 60° = √3\nSi el cateto más largo de un cartabón mide 32 centímetros, como muestra la figura, ¿cuál de\nlas siguientes medidas corresponde a su cateto menor?",
     "options": [
       {
         "letter": "A",
@@ -582,7 +582,7 @@ export const mathQuestions: Question[] = [
       },
       {
         "letter": "B",
-        "text": "32 cm. ¥3"
+        "text": "32/√3 cm."
       },
       {
         "letter": "C",
@@ -590,7 +590,7 @@ export const mathQuestions: Question[] = [
       },
       {
         "letter": "D",
-        "text": "64 cm. ¥3"
+        "text": "64/√3 cm."
       }
     ],
     "correctAnswer": "B",
@@ -663,7 +663,7 @@ export const mathQuestions: Question[] = [
       },
       {
         "letter": "D",
-        "text": "La mitad del parque automotor corresponde a buses, microbuses y busetas. Módulo de                                                                                              x"
+        "text": "La mitad del parque automotor corresponde a buses, microbuses y busetas."
       }
     ],
     "correctAnswer": "C",
@@ -696,7 +696,7 @@ export const mathQuestions: Question[] = [
   },
   {
     "id": 28,
-    "text": "En una institución educativa hay dos cursos en grado undécimo. El número de hombres y\nmujeres de cada curso se relaciona en la tabla:\nLa probabilidad de escoger un estudiante de grado undécimo, de esta institución, que sea\nmujer es de 35 . Este valor corresponde a la razón entre el número total de mujeres y",
+    "text": "En una institución educativa hay dos cursos en grado undécimo. El número de hombres y\nmujeres de cada curso se relaciona en la tabla:\nLa probabilidad de escoger un estudiante de grado undécimo, de esta institución, que sea\nmujer es de 3/5. Este valor corresponde a la razón entre el número total de mujeres y",
     "options": [
       {
         "letter": "A",
@@ -762,7 +762,7 @@ export const mathQuestions: Question[] = [
       },
       {
         "letter": "D",
-        "text": "Ser una carta roja K y ser de diamantes. Módulo de                                                                                                x"
+        "text": "Ser una carta roja K y ser de diamantes."
       }
     ],
     "correctAnswer": "B",
@@ -771,7 +771,7 @@ export const mathQuestions: Question[] = [
   },
   {
     "id": 31,
-    "text": "Un octágono regular es un polígono de ocho lados y ocho ángulos internos congruentes. La\nfigura muestra un octágono regular inscrito en una circunferencia de radio 2.\n135°           P\n135°          67,5°\n135°               135°      Q\nO\n135°          135°\n135°\nFigura\n45°\nCon la expresión x = 2sensen67,5° se puede calcular en el octágono de la figura, la medida del",
+    "text": "Un octágono regular es un polígono de ocho lados y ocho ángulos internos congruentes. La\nfigura muestra un octágono regular inscrito en una circunferencia de radio 2.\nCon la expresión x = 2·sen(45°)/sen(67,5°) se puede calcular en el octágono de la figura, la medida del",
     "options": [
       {
         "letter": "A",
@@ -893,7 +893,7 @@ export const mathQuestions: Question[] = [
   },
   {
     "id": 36,
-    "text": "A un estudiante se le pide construir un triángulo isósceles dentro de una circunferencia. Para\nello, el estudiante hace la construcción que se muestra en la figura, donde el punto P es el\ncentro de la circunferencia.\nR\nP             Q\nCon base en la construcción, ¿que condición es necesaria para que el triángulo sea isósceles?",
+    "text": "A un estudiante se le pide construir un triángulo isósceles dentro de una circunferencia. Para\nello, el estudiante hace la construcción que se muestra en la figura, donde el punto P es el\ncentro de la circunferencia.\nCon base en la construcción, ¿qué condición es necesaria para que el triángulo sea isósceles?",
     "options": [
       {
         "letter": "A",
@@ -934,7 +934,7 @@ export const mathQuestions: Question[] = [
       },
       {
         "letter": "D",
-        "text": "Un diámetro de la circunferencia. Módulo de                                                                                                   x"
+        "text": "Un diámetro de la circunferencia."
       }
     ],
     "correctAnswer": "B",
@@ -942,7 +942,7 @@ export const mathQuestions: Question[] = [
   },
   {
     "id": 38,
-    "text": "Carlina administra una pizzería y, registró en una tabla la información correspondiente a los\npedidos realizados por los 110 clientes que entraron a la pizzería el domingo.\nClientes que eligieron bebida caliente   20\nClientes que eligieron bebida fr’a    40\nClientes que eligieron pizza       100\nClientes que eligieron bebida caliente\ny bebida fr’a               0\nCon la información de la tabla, ¿cuáles de los siguientes datos se pueden calcular?",
+    "text": "Carlina administra una pizzería y registró en una tabla la información correspondiente a los\npedidos realizados por los 110 clientes que entraron a la pizzería el domingo.\nCon la información de la tabla, ¿cuáles de los siguientes datos se pueden calcular?",
     "options": [
       {
         "letter": "A",
@@ -1031,7 +1031,7 @@ export const mathQuestions: Question[] = [
       },
       {
         "letter": "D",
-        "text": "Requerimiento 4. Módulo de                                                                                            x"
+        "text": "Requerimiento 4."
       }
     ],
     "correctAnswer": "B",
@@ -1065,23 +1065,23 @@ export const mathQuestions: Question[] = [
   },
   {
     "id": 43,
-    "text": "El área de los rectángulos que se pueden construir a partir del origen, los ejes y un punto que\npertenece a la gráfica de la función f(x) = 5x , donde x > 0, se describe con la expresión\nAx = xf(x).\ny    f\n8\n7\n6\n5\n4\n3\n2\n1\n-1        1 2 3 4 5   6 7 8 9 10 11 12 13\n-1\n¿Cuál de las siguientes gráficas corresponde a Ax?",
+    "text": "El área de los rectángulos que se pueden construir a partir del origen, los ejes y un punto que\npertenece a la gráfica de la función f(x) = 5/x, donde x > 0, se describe con la expresión\nAₓ = x·f(x).\n¿Cuál de las siguientes gráficas corresponde a Aₓ?",
     "options": [
       {
         "letter": "A",
-        "text": "10 8 6 4 2 -2         2   4   6       8 10 12 14 16 -2"
+        "text": "Opción A"
       },
       {
         "letter": "B",
-        "text": "y 7 6 5 4 3 2 1 -1-1 1 2 3 4 5 6 7 8 9"
+        "text": "Opción B"
       },
       {
         "letter": "C",
-        "text": "y 10 8 6 4 2 -2        2 4 6 8 10 12 14 16 18 -2"
+        "text": "Opción C"
       },
       {
         "letter": "D",
-        "text": "5 4 3 2 1 -1 1   2       3    4   5   6   7 -1 Módulo de                                                                                                         x"
+        "text": "Opción D"
       }
     ],
     "correctAnswer": "B",
@@ -1236,7 +1236,7 @@ export const mathQuestions: Question[] = [
   },
   {
     "id": 50,
-    "text": "Alfonso tiene tres empaques para almacenar dulces. Los empaques y las medidas de estos\nse muestran en la figura.\n1. Un cilindro cuya altura es h = 2,   2. Una caja de base cuadrada,          3. Una esfera con radio\ny el radio de la base mide r = 3 .     cuya altura es h = 2 y el lado de la   r= 3 .\n2       base mide L = 3 .                           2\n2\nL\nL\nr\nh                                                h\nr\n¿Cuál de las siguientes afirmaciones es verdadera respecto al volumen de los tres empaques?",
+    "text": "Alfonso tiene tres empaques para almacenar dulces. Los empaques y las medidas de estos\nse muestran en la figura.\n1. Un cilindro cuya altura es h = 2, y el radio de la base mide r = 3/2.\n2. Una caja de base cuadrada, cuya altura es h = 2 y el lado de la base mide L = 3/2.\n3. Una esfera con radio r = 3/2.\n¿Cuál de las siguientes afirmaciones es verdadera respecto al volumen de los tres empaques?",
     "options": [
       {
         "letter": "A",
