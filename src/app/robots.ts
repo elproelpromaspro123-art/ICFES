@@ -1,5 +1,7 @@
 ﻿import type { MetadataRoute } from "next";
 
+export const dynamic = "force-static";
+
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://icfes2026.vercel.app";
 
 export default function robots(): MetadataRoute.Robots {
