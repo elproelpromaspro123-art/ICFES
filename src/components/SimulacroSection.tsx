@@ -22,7 +22,7 @@ const areas = [
 
 export default function SimulacroSection() {
   return (
-    <section id="simulacros" className="py-16 bg-icfes-gray">
+    <section id="simulacros" className="py-16 bg-icfes-gray border-t border-icfes-blue/10">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-10">
           <h2 className="text-2xl sm:text-3xl font-bold text-icfes-blue mb-2">
@@ -47,7 +47,7 @@ export default function SimulacroSection() {
                 {area.available ? (
                   <Link
                     href={area.href!}
-                    className="block bg-white rounded-xl p-6 border-2 border-transparent hover:border-icfes-blue shadow-sm hover:shadow-lg transition-all duration-300 group"
+                    className="block bg-white rounded-2xl p-6 border-2 border-transparent hover:border-icfes-blue shadow-sm hover:shadow-lg transition-all duration-300 group hover:-translate-y-0.5"
                   >
                     <div className="flex items-start gap-4">
                       <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${area.color} flex items-center justify-center shrink-0`}>
@@ -66,7 +66,7 @@ export default function SimulacroSection() {
                     </div>
                   </Link>
                 ) : (
-                  <div className="bg-white/60 rounded-xl p-6 border-2 border-gray-200 opacity-60">
+                  <div className="bg-white/60 rounded-2xl p-6 border-2 border-gray-200 opacity-60">
                     <div className="flex items-start gap-4">
                       <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${area.color} flex items-center justify-center shrink-0 opacity-50`}>
                         <Icon className="w-7 h-7 text-white" />

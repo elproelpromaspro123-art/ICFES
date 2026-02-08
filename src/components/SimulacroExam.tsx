@@ -84,7 +84,7 @@ function getScoreLabel(score: number): string {
 }
 
 const fractionRegex =
-  /([A-Za-zÁÉÍÓÚÑáéíóúñ0-9()°.,√·-]+)\/([A-Za-zÁÉÍÓÚÑáéíóúñ0-9()°.,√·-]+)/g;
+  /([A-Za-zÁÉÍÓÚÑáéíóúñ0-9().,°√·×÷+^πθ\-]+)\s*\/\s*([A-Za-zÁÉÍÓÚÑáéíóúñ0-9().,°√·×÷+^πθ\-]+)/g;
 
 function applyAutoBold(line: string): string {
   if (line.includes("**")) return line;
@@ -109,9 +109,7 @@ function applyAutoBold(line: string): string {
 function normalizeParagraphs(text: string): string[] {
   return text
     .split(/\n\s*\n/g)
-    .map((paragraph) =>
-      paragraph.replace(/\n+/g, " ").replace(/\s+/g, " ").trim()
-    )
+    .map((paragraph) => paragraph.trim())
     .filter(Boolean);
 }
 
@@ -158,14 +156,59 @@ function renderBoldAndFractions(text: string, keyBase: string): ReactNode[] {
 
 function renderFormattedText(text: string, keyBase: string): ReactNode {
   const paragraphs = normalizeParagraphs(text);
-  return paragraphs.map((paragraph, index) => {
-    const formattedLine = applyAutoBold(paragraph);
-    return (
-      <p key={`${keyBase}-p-${index}`} className="leading-relaxed">
-        {renderBoldAndFractions(formattedLine, `${keyBase}-l-${index}`)}
-      </p>
-    );
-  });
+  const listLine =
+    /^(•|I\.|II\.|III\.|IV\.|V\.|VI\.|\d+\.|Paso \d+\.|Procedimiento \d+\.|Requerimiento \d+\.|Ecuación \d+\.|Restricción [A-Z0-9]+:|Juego \d+\.)/;
+  const tableLine = /^\|/;
+  const headingLine = /:\s*$/;
+
+  return (
+    <div className="formatted-text">
+      {paragraphs.map((paragraph, index) => {
+        const lines = paragraph
+          .split("\n")
+          .map((line) => line.replace(/\s+/g, " ").trim())
+          .filter(Boolean);
+        const segments: string[] = [];
+        let buffer = "";
+
+        const flush = () => {
+          if (buffer) {
+            segments.push(buffer);
+            buffer = "";
+          }
+        };
+
+        for (const line of lines) {
+          if (listLine.test(line) || tableLine.test(line)) {
+            flush();
+            segments.push(line);
+            continue;
+          }
+          if (headingLine.test(line)) {
+            buffer = buffer ? `${buffer} ${line}` : line;
+            flush();
+            continue;
+          }
+          buffer = buffer ? `${buffer} ${line}` : line;
+        }
+        flush();
+
+        return (
+          <div key={`${keyBase}-p-${index}`} className="formatted-paragraph">
+            {segments.map((segment, segIndex) => (
+              <span key={`${keyBase}-seg-${index}-${segIndex}`}>
+                {renderBoldAndFractions(
+                  applyAutoBold(segment),
+                  `${keyBase}-l-${index}-${segIndex}`
+                )}
+                {segIndex < segments.length - 1 ? <br /> : null}
+              </span>
+            ))}
+          </div>
+        );
+      })}
+    </div>
+  );
 }
 
 export default function SimulacroExam({ questionCount, randomize }: Props) {
@@ -444,17 +487,17 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
                             : "Sin responder"}
                         </span>
                       </div>
-                      <div className="space-y-2 text-base text-gray-700 mb-3">
+                      <div className="text-base text-gray-700 mb-3">
                         {renderFormattedText(q.text, `review-q-${q.id}`)}
                       </div>
 
                       {q.groupLabel && (
                         <div className="bg-icfes-blue-lighter border border-icfes-blue/20 rounded-lg p-3 mb-3">
-                          <p className="text-sm sm:text-base font-semibold text-icfes-blue uppercase mb-2">
+                          <p className="text-sm sm:text-base md:text-lg font-semibold text-icfes-blue uppercase tracking-wide mb-2">
                             {q.groupLabel}
                           </p>
                           {q.groupText && (
-                            <div className="space-y-2 text-sm text-gray-700">
+                            <div className="text-sm sm:text-base text-gray-700">
                               {renderFormattedText(q.groupText, `review-gt-${q.id}`)}
                             </div>
                           )}
@@ -517,7 +560,7 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
                               <span className="font-bold shrink-0 mt-0.5">
                                 {opt.letter}.
                               </span>
-                              <div className="space-y-1">
+                              <div>
                                 {renderFormattedText(
                                   opt.text,
                                   `review-opt-${q.id}-${opt.letter}`
@@ -538,7 +581,7 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
                         <p className="text-xs font-semibold text-icfes-blue mb-1">
                           Explicación:
                         </p>
-                        <div className="space-y-2 text-sm text-gray-700">
+                        <div className="text-sm text-gray-700">
                           {renderFormattedText(q.explanation, `review-exp-${q.id}`)}
                         </div>
                       </div>
@@ -658,11 +701,11 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
           >
             {currentQ.groupLabel && showSharedImage && (
               <div className="bg-icfes-blue-lighter border-2 border-icfes-blue/20 rounded-xl p-4 mb-4">
-                <p className="text-sm sm:text-base font-semibold text-icfes-blue uppercase mb-3">
+                <p className="text-sm sm:text-base md:text-lg font-semibold text-icfes-blue uppercase tracking-wide mb-3">
                   {currentQ.groupLabel}
                 </p>
                 {currentQ.groupText && (
-                  <div className="space-y-2 text-sm text-gray-700 mb-3">
+                  <div className="text-sm sm:text-base text-gray-700 mb-3">
                     {renderFormattedText(currentQ.groupText, `main-gt-${currentQ.id}`)}
                   </div>
                 )}
@@ -680,12 +723,12 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
 
             {currentQ.groupLabel && !showSharedImage && currentQ.sharedImage && (
               <details className="bg-icfes-blue-lighter border-2 border-icfes-blue/20 rounded-xl p-4 mb-4">
-                <summary className="text-sm sm:text-base font-semibold text-icfes-blue uppercase cursor-pointer">
-                  {currentQ.groupLabel} (clic para ver la información)
-                </summary>
-                <div className="mt-3">
-                  {currentQ.groupText && (
-                    <div className="space-y-2 text-sm text-gray-700 mb-3">
+              <summary className="text-sm sm:text-base md:text-lg font-semibold text-icfes-blue uppercase tracking-wide cursor-pointer">
+                {currentQ.groupLabel} (clic para ver la información)
+              </summary>
+              <div className="mt-3">
+                {currentQ.groupText && (
+                    <div className="text-sm sm:text-base text-gray-700 mb-3">
                       {renderFormattedText(
                         currentQ.groupText,
                         `main-gt-${currentQ.id}-details`
@@ -708,7 +751,7 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
                 <span className="shrink-0 w-8 h-8 rounded-full bg-icfes-blue text-white flex items-center justify-center text-sm font-bold">
                   {currentIndex + 1}
                 </span>
-                <div className="space-y-2 text-base sm:text-lg text-gray-800 flex-1">
+                <div className="text-base sm:text-lg text-gray-800 flex-1">
                   {renderFormattedText(currentQ.text, `main-q-${currentQ.id}`)}
                 </div>
               </div>
@@ -759,7 +802,7 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
                       >
                         {opt.letter}
                       </span>
-                      <div className="pt-0.5 space-y-1">
+                      <div className="pt-0.5">
                         {renderFormattedText(
                           opt.text,
                           `main-opt-${currentQ.id}-${opt.letter}`

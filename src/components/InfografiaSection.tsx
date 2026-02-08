@@ -26,7 +26,7 @@ export default function InfografiaSection() {
   const handleClose = useCallback(() => setSelectedArea(null), []);
 
   return (
-    <section id="infografias" className="py-16 bg-white">
+    <section id="infografias" className="py-16 bg-gradient-to-b from-white to-icfes-gray/40 border-t border-icfes-blue/10">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-10">
           <h2 className="text-2xl sm:text-3xl font-bold text-icfes-blue mb-2">
@@ -45,7 +45,7 @@ export default function InfografiaSection() {
                 key={area.name}
                 onClick={() => area.available && setSelectedArea(area.name)}
                 disabled={!area.available}
-                className={`relative group rounded-xl p-5 text-center transition-all duration-300 border-2 ${
+                className={`relative group rounded-2xl p-5 text-center transition-all duration-300 border-2 shadow-sm hover:-translate-y-0.5 ${
                   area.available
                     ? "border-icfes-blue/20 hover:border-icfes-blue hover:shadow-lg cursor-pointer bg-white"
                     : "border-gray-200 bg-gray-50 cursor-not-allowed opacity-70"

@@ -1164,7 +1164,7 @@ export const mathQuestions: Question[] = [
   },
   {
     "id": 47,
-    "text": "La expresión 103 = I0 relaciona la sonoridad de un sonido de 30 decibeles con su intensidad\n(I) y la menor intensidad (I₀) que percibe el oído humano. ¿Cuántas veces es el valor de I\nrespecto a I₀?",
+    "text": "La expresión 10^3 = I/I₀ relaciona la sonoridad de un sonido de 30 decibeles con su intensidad\n(I) y la menor intensidad (I₀) que percibe el oído humano. ¿Cuántas veces es el valor de I\nrespecto a I₀?",
     "options": [
       {
         "letter": "A",
@@ -1252,7 +1252,7 @@ export const mathQuestions: Question[] = [
       },
       {
         "letter": "D",
-        "text": "El volumen del cilindro es mayor que el volumen de la caja; además, el volumen de la esfera es mayor que el volumen del cilindro. Tabla de respuestas correctas 1    A         26    C 2    C         27    A 3    B         28    A 4    C         29    C 5    B         30    B 6    D         31    B 7    C         32    B 8    C         33    D 9    C         34    C 10    C         35    B 11    B         36    D 12    B         37    B 13    D         38    C 14    B         39    C 15    B         40    B 16    D         41    B 17    D         42    D 18    C         43    B 19    B         44    B 20    A         45    D 21    A         46    C 22    C         47    D 23    B         48    B 24    C         49    D 25    A         50    A Calle 26 N.° 69-76, Torre 2, Piso 17, Edificio Elemento, Bogotá, D. C., Colombia • www.icfes.gov.co Líneas de atención al usuario: Bogotá Tel.: (57+1) 484-1460 | PBX: (57+1) 484-1410 - Gratuita nacional: 018000-519535"
+        "text": "El volumen del cilindro es mayor que el volumen de la caja; además, el volumen de la esfera es mayor que el volumen del cilindro."
       }
     ],
     "correctAnswer": "A",

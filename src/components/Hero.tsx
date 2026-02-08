@@ -1,6 +1,7 @@
 "use client";
 
 import { ShieldCheck, ExternalLink, UserCheck, Heart } from "lucide-react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 export default function Hero() {
@@ -9,6 +10,16 @@ export default function Hero() {
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-10 left-10 w-72 h-72 bg-white rounded-full blur-3xl" />
         <div className="absolute bottom-10 right-10 w-96 h-96 bg-icfes-yellow rounded-full blur-3xl" />
+      </div>
+      <div className="absolute right-6 top-8 opacity-15 hidden sm:block">
+        <Image
+          src="/favicon.png"
+          alt=""
+          width={120}
+          height={120}
+          className="rounded-2xl rotate-6 shadow-2xl"
+          aria-hidden
+        />
       </div>
 
       <div className="relative max-w-5xl mx-auto px-4 py-16 sm:py-24 text-center text-white">
@@ -22,7 +33,8 @@ export default function Hero() {
             <span className="text-icfes-yellow">ICFES Saber 11°</span>
           </h1>
           <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Material 100% oficial, verificado y gratuito para que logres el mejor puntaje posible.
+            Toda la información es 100% oficial, verificada y gratuita para que
+            logres el mejor puntaje posible.
           </p>
         </motion.div>
 
@@ -36,14 +48,14 @@ export default function Hero() {
             <ShieldCheck className="w-8 h-8 mx-auto mb-2 text-icfes-yellow" />
             <h3 className="font-semibold text-sm mb-1">100% Oficial</h3>
             <p className="text-xs text-white/80">
-              Toda la información proviene de materiales públicos del ICFES.
+              Toda la información es 100% oficial (materiales públicos del ICFES).
             </p>
           </div>
           <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
             <UserCheck className="w-8 h-8 mx-auto mb-2 text-icfes-yellow" />
             <h3 className="font-semibold text-sm mb-1">Revisado por Humanos</h3>
             <p className="text-xs text-white/80">
-              Toda esta información fue revisada por un humano y NO por una IA.
+              Información revisada por un humano y NO por una IA.
             </p>
           </div>
           <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">

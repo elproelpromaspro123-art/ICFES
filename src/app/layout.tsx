@@ -28,8 +28,11 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Prepárate ICFES" }],
   icons: {
-    icon: [{ url: "/favicon.png", type: "image/png" }],
-    shortcut: "/favicon.png",
+    icon: [
+      { url: "/favicon.ico", type: "image/x-icon" },
+      { url: "/favicon.png", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
     apple: "/favicon.png",
   },
   openGraph: {
@@ -60,8 +63,9 @@ export default function RootLayout({
   return (
     <html lang="es">
       <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/favicon.png" type="image/png" />
-        <link rel="shortcut icon" href="/favicon.png" />
+        <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/favicon.png" />
       </head>
       <body
