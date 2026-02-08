@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Calculator, BookOpen, Globe2, FlaskConical, Languages, Lock, X, ChevronRight } from "lucide-react";
@@ -23,6 +23,8 @@ export default function InfografiaSection() {
   const [selectedArea, setSelectedArea] = useState<string | null>(null);
   const selected = areas.find((a) => a.name === selectedArea);
 
+  const handleClose = useCallback(() => setSelectedArea(null), []);
+
   return (
     <section id="infografias" className="py-16 bg-white">
       <div className="max-w-6xl mx-auto px-4">
@@ -35,7 +37,7 @@ export default function InfografiaSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {areas.map((area) => {
             const Icon = area.icon;
             return (
@@ -79,36 +81,38 @@ export default function InfografiaSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-            onClick={() => setSelectedArea(null)}
+            className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-0 sm:p-4"
+            onClick={handleClose}
           >
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ type: "spring", duration: 0.4 }}
-              className="relative bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-auto"
+              className="relative bg-white sm:rounded-2xl shadow-2xl w-full h-full sm:h-auto sm:max-w-4xl sm:max-h-[90vh] overflow-auto"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="sticky top-0 bg-white rounded-t-2xl border-b px-6 py-4 flex items-center justify-between z-10">
-                <h3 className="font-bold text-icfes-blue text-lg">
+              <div className="sticky top-0 bg-white sm:rounded-t-2xl border-b px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between z-10">
+                <h3 className="font-bold text-icfes-blue text-base sm:text-lg">
                   Infografía — {selected.name}
                 </h3>
                 <button
-                  onClick={() => setSelectedArea(null)}
-                  className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                  onClick={handleClose}
+                  className="p-2.5 hover:bg-gray-100 rounded-full transition-colors"
+                  aria-label="Cerrar"
                 >
-                  <X className="w-5 h-5 text-gray-500" />
+                  <X className="w-6 h-6 text-gray-500" />
                 </button>
               </div>
-              <div className="p-4 sm:p-6">
+              <div className="p-2 sm:p-6 overflow-auto touch-pan-x touch-pan-y">
                 <Image
                   src={selected.image}
                   alt={`Infografía de ${selected.name}`}
                   width={1200}
                   height={1600}
-                  className="w-full h-auto rounded-lg"
+                  className="w-full h-auto sm:rounded-lg select-none"
                   priority
+                  draggable={false}
                 />
               </div>
             </motion.div>

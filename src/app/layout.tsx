@@ -15,8 +15,39 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Prepárate para el ICFES Saber 11° | Práctica Gratuita",
   description:
-    "Plataforma gratuita de preparación para el examen ICFES Saber 11° con simulacros, infografías y material oficial verificado.",
-  keywords: ["ICFES", "Saber 11", "práctica", "simulacro", "Colombia", "matemáticas"],
+    "Proyecto educativo independiente y gratuito para prepararte para el examen ICFES Saber 11°. Simulacros, infografías y material recopilado de fuentes públicas. No afiliado con el ICFES.",
+  keywords: [
+    "ICFES",
+    "Saber 11",
+    "práctica",
+    "simulacro",
+    "Colombia",
+    "matemáticas",
+    "preparación ICFES",
+    "examen de estado",
+  ],
+  authors: [{ name: "Prepárate ICFES" }],
+  icons: {
+    icon: "/favicon.svg",
+  },
+  openGraph: {
+    title: "Prepárate para el ICFES Saber 11° | Práctica Gratuita",
+    description:
+      "Proyecto educativo independiente y gratuito para prepararte para el examen ICFES Saber 11°. Simulacros, infografías y material recopilado de fuentes públicas.",
+    type: "website",
+    locale: "es_CO",
+    siteName: "Prepárate ICFES",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Prepárate para el ICFES Saber 11°",
+    description:
+      "Simulacros gratuitos e infografías para prepararte para el Saber 11°. Proyecto educativo independiente.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({

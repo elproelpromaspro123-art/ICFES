@@ -36,7 +36,7 @@ export default function Hero() {
             <ShieldCheck className="w-8 h-8 mx-auto mb-2 text-icfes-yellow" />
             <h3 className="font-semibold text-sm mb-1">100% Oficial</h3>
             <p className="text-xs text-white/80">
-              Toda la información proviene directamente del ICFES.
+              Toda la información proviene de materiales públicos del ICFES.
             </p>
           </div>
           <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
@@ -73,6 +73,9 @@ export default function Hero() {
             <ExternalLink className="w-4 h-4" />
             Caja de Herramientas ICFES Saber 11°
           </a>
+          <p className="text-xs text-white/50 mt-3">
+            Proyecto educativo independiente — No afiliado con el ICFES
+          </p>
         </motion.div>
       </div>
     </section>

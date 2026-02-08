@@ -229,6 +229,19 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
                         {q.text}
                       </p>
 
+                      {q.groupLabel && (
+                        <div className="bg-icfes-blue-lighter border border-icfes-blue/20 rounded-lg p-3 mb-3">
+                          <p className="text-xs font-semibold text-icfes-blue uppercase mb-2">
+                            {q.groupLabel}
+                          </p>
+                          {q.groupText && (
+                            <p className="text-xs text-gray-700 whitespace-pre-line">
+                              {q.groupText}
+                            </p>
+                          )}
+                        </div>
+                      )}
+
                       {q.sharedImage && (
                         <div className="mb-3">
                           <Image
@@ -424,6 +437,11 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
                 <p className="text-xs font-semibold text-icfes-blue uppercase mb-3">
                   {currentQ.groupLabel}
                 </p>
+                {currentQ.groupText && (
+                  <p className="text-xs text-gray-700 whitespace-pre-line mb-3">
+                    {currentQ.groupText}
+                  </p>
+                )}
                 {currentQ.sharedImage && (
                   <Image
                     src={currentQ.sharedImage}
@@ -442,6 +460,11 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
                   {currentQ.groupLabel} (clic para ver la información)
                 </summary>
                 <div className="mt-3">
+                  {currentQ.groupText && (
+                    <p className="text-xs text-gray-700 whitespace-pre-line mb-3">
+                      {currentQ.groupText}
+                    </p>
+                  )}
                   <Image
                     src={currentQ.sharedImage}
                     alt="Información compartida"
@@ -464,7 +487,7 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
               </div>
 
               {currentQ.image && (
-                <div className="mb-4 ml-11">
+                <div className="mb-4 ml-0 sm:ml-11 overflow-x-auto">
                   <Image
                     src={currentQ.image}
                     alt={`Imagen pregunta ${currentQ.id}`}
@@ -476,7 +499,7 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
               )}
 
               {currentQ.extraImage && (
-                <div className="mb-4 ml-11">
+                <div className="mb-4 ml-0 sm:ml-11 overflow-x-auto">
                   <Image
                     src={currentQ.extraImage}
                     alt={`Imagen adicional pregunta ${currentQ.id}`}
@@ -487,7 +510,7 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
                 </div>
               )}
 
-              <div className="space-y-2 ml-11">
+              <div className="space-y-2 ml-0 sm:ml-11">
                 {currentQ.options.map((opt) => {
                   const selected = answers[currentQ.id] === opt.letter;
                   return (
@@ -521,7 +544,7 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
 
       {/* Bottom nav */}
       <div className="bg-white border-t shadow-sm sticky bottom-0">
-        <div className="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
+        <div className="max-w-3xl mx-auto px-2 sm:px-4 py-3 sm:py-3 flex items-center justify-between gap-2">
           <button
             onClick={() => setCurrentIndex((i) => Math.max(0, i - 1))}
             disabled={currentIndex === 0}
@@ -531,12 +554,12 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
             Anterior
           </button>
 
-          <div className="hidden sm:flex items-center gap-1 overflow-x-auto max-w-md">
+          <div className="flex items-center gap-1 overflow-x-auto max-w-[40vw] sm:max-w-md px-1 scrollbar-hide">
             {questions.map((q, i) => (
               <button
                 key={q.id}
                 onClick={() => setCurrentIndex(i)}
-                className={`w-7 h-7 rounded-md text-xs font-medium transition-colors shrink-0 ${
+                className={`w-7 h-7 sm:w-7 sm:h-7 rounded-md text-xs font-medium transition-colors shrink-0 ${
                   i === currentIndex
                     ? "bg-icfes-blue text-white"
                     : answers[q.id]
@@ -547,11 +570,6 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
                 {i + 1}
               </button>
             ))}
-          </div>
-
-          <div className="sm:hidden flex items-center gap-1.5 text-sm text-icfes-blue font-medium">
-            <Clock className="w-4 h-4" />
-            {formatTime(elapsed)}
           </div>
 
           <button
