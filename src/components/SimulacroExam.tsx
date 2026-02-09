@@ -17,34 +17,12 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { mathQuestions, Question } from "@/data/questions";
+import { SimulacroProgress, SimulacroHistoryEntry, HISTORY_KEY, makeProgressKey, safeParseJSON } from "@/lib/simulacro";
 
 interface Props {
   questionCount: number;
   randomize: boolean;
 }
-
-type SimulacroProgress = {
-  questionCount: number;
-  randomize: boolean;
-  order: number[];
-  answers: Record<number, string>;
-  currentIndex: number;
-  elapsed: number;
-  startedAt: string;
-};
-
-type SimulacroHistoryEntry = {
-  id: string;
-  date: string;
-  questionCount: number;
-  randomize: boolean;
-  score: number;
-  correct: number;
-  incorrect: number;
-  elapsed: number;
-};
-
-const HISTORY_KEY = "icfes_simulacro_history";
 
 function shuffleArray<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -213,8 +191,7 @@ function renderFormattedText(text: string, keyBase: string): ReactNode {
 
 export default function SimulacroExam({ questionCount, randomize }: Props) {
   const progressKey = useMemo(
-    () =>
-      `icfes_simulacro_progress_${questionCount}_${randomize ? "rand" : "fixed"}`,
+    () => makeProgressKey(questionCount, randomize),
     [questionCount, randomize]
   );
 
@@ -229,25 +206,14 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const raw = localStorage.getItem(progressKey);
-    if (raw) {
-      try {
-        const data = JSON.parse(raw) as SimulacroProgress;
-        if (
-          data &&
-          Array.isArray(data.order) &&
-          typeof data.currentIndex === "number"
-        ) {
-          setQuestionOrder(data.order);
-          setAnswers(data.answers || {});
-          setCurrentIndex(data.currentIndex || 0);
-          setElapsed(data.elapsed || 0);
-          setHydrated(true);
-          return;
-        }
-      } catch {
-        // ignore malformed data
-      }
+    const data = safeParseJSON<SimulacroProgress>(localStorage.getItem(progressKey));
+    if (data && Array.isArray(data.order) && typeof data.currentIndex === "number") {
+      setQuestionOrder(data.order);
+      setAnswers(data.answers || {});
+      setCurrentIndex(data.currentIndex || 0);
+      setElapsed(data.elapsed || 0);
+      setHydrated(true);
+      return;
     }
     const base = randomize ? shuffleArray(mathQuestions) : [...mathQuestions];
     const order = base.slice(0, questionCount).map((q) => q.id);
@@ -300,6 +266,14 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
     }
   }, [questions.length, currentIndex]);
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && showConfirm) setShowConfirm(false);
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [showConfirm]);
+
   const selectAnswer = useCallback(
     (questionId: number, letter: string) => {
       if (finished) return;
@@ -329,8 +303,7 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
       elapsed,
     };
     try {
-      const raw = localStorage.getItem(HISTORY_KEY);
-      const history = raw ? (JSON.parse(raw) as SimulacroHistoryEntry[]) : [];
+      const history = safeParseJSON<SimulacroHistoryEntry[]>(localStorage.getItem(HISTORY_KEY)) ?? [];
       history.unshift(entry);
       localStorage.setItem(
         HISTORY_KEY,
@@ -511,6 +484,7 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
                             alt={`Contexto pregunta ${q.id}`}
                             width={600}
                             height={400}
+                            sizes="(max-width: 768px) 100vw, 600px"
                             className="rounded-lg max-w-full h-auto"
                           />
                         </div>
@@ -522,6 +496,7 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
                             alt={`Imagen pregunta ${q.id}`}
                             width={600}
                             height={400}
+                            sizes="(max-width: 768px) 100vw, 600px"
                             className="rounded-lg max-w-full h-auto"
                           />
                         </div>
@@ -533,6 +508,7 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
                             alt={`Imagen adicional pregunta ${q.id}`}
                             width={600}
                             height={400}
+                            sizes="(max-width: 768px) 100vw, 600px"
                             className="rounded-lg max-w-full h-auto"
                           />
                         </div>
@@ -649,6 +625,9 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
       <AnimatePresence>
         {showConfirm && (
           <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="confirm-dialog-title"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -661,7 +640,7 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
               className="bg-white rounded-2xl p-6 max-w-sm w-full shadow-2xl text-center"
             >
               <AlertCircle className="w-12 h-12 mx-auto mb-3 text-icfes-yellow" />
-              <h3 className="font-bold text-lg mb-2">¿Finalizar simulacro?</h3>
+              <h3 id="confirm-dialog-title" className="font-bold text-lg mb-2">¿Finalizar simulacro?</h3>
               <p className="text-sm text-gray-500 mb-1">
                 Has respondido {answeredCount} de {questions.length} preguntas.
               </p>
@@ -715,6 +694,7 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
                     alt="Información compartida"
                     width={700}
                     height={500}
+                    sizes="(max-width: 768px) 100vw, 600px"
                     className="rounded-lg max-w-full h-auto"
                   />
                 )}
@@ -740,6 +720,7 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
                     alt="Información compartida"
                     width={700}
                     height={500}
+                    sizes="(max-width: 768px) 100vw, 600px"
                     className="rounded-lg max-w-full h-auto"
                   />
                 </div>
@@ -763,6 +744,7 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
                     alt={`Imagen pregunta ${currentQ.id}`}
                     width={600}
                     height={400}
+                    sizes="(max-width: 768px) 100vw, 600px"
                     className="rounded-lg max-w-full h-auto"
                   />
                 </div>
@@ -775,18 +757,21 @@ export default function SimulacroExam({ questionCount, randomize }: Props) {
                     alt={`Imagen adicional pregunta ${currentQ.id}`}
                     width={600}
                     height={400}
+                    sizes="(max-width: 768px) 100vw, 600px"
                     className="rounded-lg max-w-full h-auto"
                   />
                 </div>
               )}
 
-              <div className="space-y-2 ml-0 sm:ml-11">
+              <div className="space-y-2 ml-0 sm:ml-11" role="radiogroup" aria-label={`Opciones para pregunta ${currentIndex + 1}`}>
                 {currentQ.options.map((opt) => {
                   const selected = answers[currentQ.id] === opt.letter;
                   return (
                     <button
                       key={opt.letter}
                       onClick={() => selectAnswer(currentQ.id, opt.letter)}
+                      role="radio"
+                      aria-checked={selected}
                       className={`w-full flex items-start gap-3 p-3 sm:p-4 rounded-xl border-2 text-left text-sm transition-all duration-200 ${
                         selected
                           ? "border-icfes-blue bg-icfes-blue-lighter text-icfes-blue"

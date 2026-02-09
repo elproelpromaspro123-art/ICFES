@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import CopyProtection from "@/components/CopyProtection";
 import "./globals.css";
@@ -18,20 +18,20 @@ const metadataBase = siteUrl ? new URL(siteUrl) : undefined;
 
 export const metadata: Metadata = {
   metadataBase,
-  title: "Preparate para el ICFES Saber 11 | Practica Gratuita",
+  title: "Prepárate para el ICFES Saber 11 | Práctica Gratuita",
   description:
-    "Proyecto educativo independiente y gratuito para prepararte para el examen ICFES Saber 11. Simulacros, infografias y material recopilado de fuentes publicas. No afiliado con el ICFES.",
+    "Proyecto educativo independiente y gratuito para prepararte para el examen ICFES Saber 11. Simulacros, infografías y material recopilado de fuentes públicas. No afiliado con el ICFES.",
   keywords: [
     "ICFES",
     "Saber 11",
-    "practica",
+    "práctica",
     "simulacro",
     "Colombia",
-    "matematicas",
-    "preparacion ICFES",
+    "matemáticas",
+    "preparación ICFES",
     "examen de estado",
   ],
-  authors: [{ name: "Preparate ICFES" }],
+  authors: [{ name: "Prepárate ICFES" }],
   alternates: {
     canonical: "/",
   },
@@ -44,19 +44,28 @@ export const metadata: Metadata = {
     apple: "/favicon.png",
   },
   openGraph: {
-    title: "Preparate para el ICFES Saber 11 | Practica Gratuita",
+    title: "Prepárate para el ICFES Saber 11 | Práctica Gratuita",
     description:
-      "Proyecto educativo independiente y gratuito para prepararte para el examen ICFES Saber 11. Simulacros, infografias y material recopilado de fuentes publicas.",
+      "Proyecto educativo independiente y gratuito para prepararte para el examen ICFES Saber 11. Simulacros, infografías y material recopilado de fuentes públicas.",
     type: "website",
     locale: "es_CO",
-    siteName: "Preparate ICFES",
+    siteName: "Prepárate ICFES",
     url: "/",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Prepárate ICFES - Práctica gratuita para el Saber 11",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Preparate para el ICFES Saber 11",
+    title: "Prepárate para el ICFES Saber 11",
     description:
-      "Simulacros gratuitos e infografias para prepararte para el Saber 11. Proyecto educativo independiente.",
+      "Simulacros gratuitos e infografías para prepararte para el Saber 11. Proyecto educativo independiente.",
+    images: ["/og.png"],
   },
   robots: {
     index: true,
@@ -78,13 +87,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <head>
-        <meta charSet="utf-8" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/favicon.png" type="image/png" />
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/favicon.png" />
-      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

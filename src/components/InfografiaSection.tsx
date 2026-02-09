@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Calculator, BookOpen, Globe2, FlaskConical, Languages, Lock, X, ChevronRight } from "lucide-react";
@@ -24,6 +24,14 @@ export default function InfografiaSection() {
   const selected = areas.find((a) => a.name === selectedArea);
 
   const handleClose = useCallback(() => setSelectedArea(null), []);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && selectedArea) handleClose();
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [selectedArea, handleClose]);
 
   return (
     <section id="infografias" className="py-16 bg-gradient-to-b from-white to-icfes-gray/40 border-t border-icfes-blue/10">
@@ -78,6 +86,9 @@ export default function InfografiaSection() {
       <AnimatePresence>
         {selected && selected.image && (
           <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="infografia-modal-title"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -93,7 +104,7 @@ export default function InfografiaSection() {
               onClick={(e) => e.stopPropagation()}
             >
               <div className="sticky top-0 bg-white sm:rounded-t-2xl border-b px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between z-10">
-                <h3 className="font-bold text-icfes-blue text-base sm:text-lg">
+                <h3 id="infografia-modal-title" className="font-bold text-icfes-blue text-base sm:text-lg">
                   Infografía — {selected.name}
                 </h3>
                 <button
@@ -110,8 +121,8 @@ export default function InfografiaSection() {
                   alt={`Infografía de ${selected.name}`}
                   width={1200}
                   height={1600}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 896px"
                   className="w-full h-auto sm:rounded-lg select-none"
-                  priority
                   draggable={false}
                 />
               </div>

@@ -1,4 +1,4 @@
-﻿import Navbar from "@/components/Navbar";
+import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import InfografiaSection from "@/components/InfografiaSection";
 import SimulacroSection from "@/components/SimulacroSection";
@@ -9,14 +9,14 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://icfes2026.vercel.ap
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "Prep�rate ICFES",
+  name: "Prepárate ICFES",
   url: siteUrl,
   description:
-    "Proyecto educativo independiente y gratuito para prepararte para el examen ICFES Saber 11�. Simulacros, infograf�as y material recopilado de fuentes p�blicas.",
+    "Proyecto educativo independiente y gratuito para prepararte para el examen ICFES Saber 11°. Simulacros, infografías y material recopilado de fuentes públicas.",
   inLanguage: "es-CO",
   publisher: {
     "@type": "Organization",
-    name: "Prep�rate ICFES",
+    name: "Prepárate ICFES",
   },
   isAccessibleForFree: true,
 };

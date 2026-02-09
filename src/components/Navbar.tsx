@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { BookOpen, ClipboardList, ExternalLink, Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navItems = [
@@ -13,6 +13,14 @@ const navItems = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && menuOpen) setMenuOpen(false);
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [menuOpen]);
 
   return (
     <nav className="bg-white/95 text-icfes-blue shadow-sm sticky top-0 z-50 border-b border-icfes-blue/10 backdrop-blur">
@@ -59,7 +67,9 @@ export default function Navbar() {
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="md:hidden p-2 rounded-lg hover:bg-icfes-blue/10"
-            aria-label="Menu"
+            aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
           >
             {menuOpen ? (
               <X className="w-6 h-6" />
@@ -73,6 +83,8 @@ export default function Navbar() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
+            id="mobile-menu"
+            role="menu"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -92,6 +104,7 @@ export default function Navbar() {
                     <Link
                       href={item.href}
                       onClick={() => setMenuOpen(false)}
+                      role="menuitem"
                       className="flex items-center gap-3 py-3 px-4 rounded-xl hover:bg-icfes-blue/10 transition-colors text-base text-icfes-blue"
                     >
                       <Icon className="w-5 h-5" />
@@ -110,6 +123,7 @@ export default function Navbar() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setMenuOpen(false)}
+                  role="menuitem"
                   className="flex items-center gap-3 py-3 px-4 rounded-xl bg-icfes-blue text-white transition-colors text-base hover:bg-icfes-blue-light"
                 >
                   <ExternalLink className="w-5 h-5" />
