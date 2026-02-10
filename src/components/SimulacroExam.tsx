@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import {
   useState,
@@ -6,7 +6,6 @@ import {
   useMemo,
   useCallback,
   useRef,
-  type ReactNode,
 } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -34,6 +33,7 @@ import {
   safeParseJSON,
 } from "@/lib/simulacro";
 import { useFocusTrap } from "@/lib/useFocusTrap";
+import { renderFormattedText } from "@/lib/formatText";
 
 interface Props {
   questionCount: number;
@@ -78,208 +78,6 @@ function getScoreLabel(score: number): string {
   if (score >= 60) return "Bueno";
   if (score >= 40) return "Aceptable";
   return "Necesitas mejorar";
-}
-
-const fractionRegex =
-  /([A-Za-zÁÉÍÓÚÑáéíóúñ0-9().,°v·×÷+^p?\-]+)\s*\/\s*([A-Za-zÁÉÍÓÚÑáéíóúñ0-9().,°v·×÷+^p?\-]+)/g;
-
-function applyAutoBold(line: string): string {
-  if (line.includes("**")) return line;
-  const patterns = [
-    /^(Paso \d+\.)/,
-    /^(Procedimiento \d+\.)/,
-    /^(Requerimiento \d+\.)/,
-    /^(Ecuación \d+\.)/,
-    /^(Restricción [A-Z0-9]+:)/,
-    /^(Juego \d+\.)/,
-    /^(Recuerde que:)/,
-    /^(RESPONDA.*)/,
-    /^(Fuente:|FUENTE:)/,
-    /^(Tomado.*)/,
-  ];
-  let output = line;
-  for (const pattern of patterns) {
-    if (pattern.test(output)) {
-      output = output.replace(pattern, "**$1**");
-    }
-  }
-  return output;
-}
-
-function normalizeParagraphs(text: string): string[] {
-  return text
-    .split(/\n\s*\n/g)
-    .map((paragraph) => paragraph.trim())
-    .filter(Boolean);
-}
-
-function splitIntoSentenceBlocks(text: string): string[] {
-  const blocks: string[] = [];
-  let buffer = "";
-  let i = 0;
-
-  while (i < text.length) {
-    const char = text[i];
-    buffer += char;
-
-    if (char === "." || char === "!" || char === "?") {
-      if (char === "." && text[i + 1] === "." && text[i + 2] === ".") {
-        buffer += "..";
-        i += 2;
-      }
-
-      let j = i + 1;
-      while (j < text.length && text[j] === " ") j += 1;
-
-      if (j >= text.length) {
-        if (buffer.trim()) blocks.push(buffer.trim());
-        buffer = "";
-        break;
-      }
-
-      if (j > i + 1) {
-        const next = text[j];
-        if (/[A-ZÁÉÍÓÚÑ¿¡0-9]/.test(next)) {
-          if (buffer.trim()) blocks.push(buffer.trim());
-          buffer = "";
-          i = j - 1;
-        }
-      }
-    }
-
-    i += 1;
-  }
-
-  if (buffer.trim()) blocks.push(buffer.trim());
-  return blocks.length > 0 ? blocks : [text];
-}
-
-function renderFractions(text: string, keyBase: string): ReactNode[] {
-  const superscriptMap: Record<string, string> = {
-    "0": "⁰",
-    "1": "¹",
-    "2": "²",
-    "3": "³",
-    "4": "⁴",
-    "5": "⁵",
-    "6": "⁶",
-    "7": "⁷",
-    "8": "⁸",
-    "9": "⁹",
-    "-": "⁻",
-  };
-
-  const applySuperscripts = (input: string) =>
-    input.replace(/\^(-?\d+)/g, (_, exp: string) =>
-      exp
-        .split("")
-        .map((ch) => superscriptMap[ch] ?? ch)
-        .join("")
-    );
-
-  const parts: ReactNode[] = [];
-  let lastIndex = 0;
-  let match: RegExpExecArray | null;
-  let count = 0;
-  const regex = new RegExp(fractionRegex);
-  const processed = applySuperscripts(text);
-  while ((match = regex.exec(processed)) !== null) {
-    if (match.index > lastIndex) {
-      parts.push(processed.slice(lastIndex, match.index));
-    }
-    parts.push(
-      <span className="fraction" key={`${keyBase}-frac-${count}`}>
-        <span className="fraction-top">{match[1]}</span>
-        <span className="fraction-bar" />
-        <span className="fraction-bottom">{match[2]}</span>
-      </span>
-    );
-    lastIndex = match.index + match[0].length;
-    count += 1;
-  }
-  if (lastIndex < processed.length) {
-    parts.push(processed.slice(lastIndex));
-  }
-  return parts;
-}
-
-function renderBoldAndFractions(text: string, keyBase: string): ReactNode[] {
-  const segments = text.split(/\*\*(.*?)\*\*/g);
-  return segments.map((segment, i) => {
-    const content = renderFractions(segment, `${keyBase}-${i}`);
-    if (i % 2 === 1) {
-      return (
-        <strong key={`${keyBase}-b-${i}`} className="font-semibold text-gray-900">
-          {content}
-        </strong>
-      );
-    }
-    return <span key={`${keyBase}-t-${i}`}>{content}</span>;
-  });
-}
-
-function renderFormattedText(text: string, keyBase: string): ReactNode {
-  const paragraphs = normalizeParagraphs(text);
-  const listLine =
-    /^(•|I\\.|II\\.|III\\.|IV\\.|V\\.|VI\\.|\\d+\\.|Paso \\d+\\.|Procedimiento \\d+\\.|Requerimiento \\d+\\.|Ecuación \\d+\\.|Restricción [A-Z0-9]+:|Juego \\d+\\.)/;
-  const tableLine = /^\|/;
-  const headingLine = /:\s*$/;
-
-  return (
-    <div className="formatted-text">
-      {paragraphs.map((paragraph, index) => {
-        const lines = paragraph
-          .split("\n")
-          .map((line) => line.replace(/\s+/g, " ").trim())
-          .filter(Boolean);
-        const segments: { text: string; preserve: boolean }[] = [];
-        let buffer = "";
-
-        const flush = () => {
-          if (buffer) {
-            segments.push({ text: buffer, preserve: false });
-            buffer = "";
-          }
-        };
-
-        for (const line of lines) {
-          if (listLine.test(line) || tableLine.test(line)) {
-            flush();
-            segments.push({ text: line, preserve: true });
-            continue;
-          }
-          if (headingLine.test(line)) {
-            buffer = buffer ? `${buffer} ${line}` : line;
-            flush();
-            continue;
-          }
-          buffer = buffer ? `${buffer} ${line}` : line;
-        }
-        flush();
-
-        return (
-          <div key={`${keyBase}-p-${index}`} className="formatted-paragraph">
-            {segments.flatMap((segment, segIndex) => {
-              const blocks = segment.preserve
-                ? [segment.text]
-                : splitIntoSentenceBlocks(segment.text);
-              return blocks.map((block, blockIndex) => (
-                <div
-                  key={`${keyBase}-seg-${index}-${segIndex}-${blockIndex}`}
-                  className={segment.preserve ? "formatted-line" : "formatted-sentence"}
-                >
-                  {renderBoldAndFractions(
-                    applyAutoBold(block),
-                    `${keyBase}-l-${index}-${segIndex}-${blockIndex}`
-                  )}
-                </div>
-              ));
-            })}
-          </div>
-        );
-      })}
-    </div>
-  );
 }
 
 export default function SimulacroExam({
@@ -1018,6 +816,7 @@ export default function SimulacroExam({
               <button
                 key={q.id}
                 onClick={() => setCurrentIndex(i)}
+                aria-label={`Ir a pregunta ${i + 1}${answers[q.id] ? ' (respondida)' : ''}`}
                 className={`w-7 h-7 sm:w-7 sm:h-7 rounded-md text-xs font-medium transition-colors shrink-0 ${
                   i === currentIndex
                     ? "bg-icfes-blue text-white"

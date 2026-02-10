@@ -60,9 +60,9 @@ export default function Hero() {
           </div>
           <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
             <Heart className="w-8 h-8 mx-auto mb-2 text-icfes-yellow" />
-            <h3 className="font-semibold text-sm mb-1">Lo Mejor Para Ti</h3>
+            <h3 className="font-semibold text-sm mb-1">Hecho Para Ti</h3>
             <p className="text-xs text-white/80">
-              Básicamente lo que queremos es lo mejor para todos ustedes.
+              Diseñado para ayudarte a alcanzar tu mejor puntaje en el Saber 11°.
             </p>
           </div>
         </motion.div>
