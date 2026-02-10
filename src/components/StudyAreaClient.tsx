@@ -234,24 +234,6 @@ export default function StudyAreaClient({
     };
   }, [loadQuestions]);
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const stored = localStorage.getItem("icfes_study_reading_mode");
-    if (stored) setReadingMode(stored === "true");
-    const storedAnswers = localStorage.getItem("icfes_study_show_answers");
-    if (storedAnswers) setShowAnswers(storedAnswers === "true");
-  }, []);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    localStorage.setItem("icfes_study_reading_mode", String(readingMode));
-  }, [readingMode]);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    localStorage.setItem("icfes_study_show_answers", String(showAnswers));
-  }, [showAnswers]);
-
   const filteredQuestions = useMemo(() => {
     const trimmed = query.trim().toLowerCase();
     if (!trimmed) return questions;
