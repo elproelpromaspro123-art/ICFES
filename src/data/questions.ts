@@ -1,15 +1,4 @@
-export interface Question {
-  id: number;
-  text: string;
-  options: { letter: string; text: string }[];
-  correctAnswer: string;
-  explanation: string;
-  image?: string;
-  sharedImage?: string;
-  extraImage?: string;
-  groupLabel?: string;
-  groupText?: string;
-}
+import { Question } from "./types";
 
 export const mathQuestions: Question[] = [
   {
@@ -1260,3 +1249,5 @@ export const mathQuestions: Question[] = [
     "image": "/images/matematicas/imagen de la pregunta 50.png"
   }
 ];
+
+export type { Question } from "./types";

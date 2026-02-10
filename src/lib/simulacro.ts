@@ -1,4 +1,5 @@
 export type SimulacroProgress = {
+  areaId: string;
   questionCount: number;
   randomize: boolean;
   order: number[];
@@ -11,6 +12,7 @@ export type SimulacroProgress = {
 export type SimulacroHistoryEntry = {
   id: string;
   date: string;
+  areaId: string;
   questionCount: number;
   randomize: boolean;
   score: number;
@@ -21,7 +23,17 @@ export type SimulacroHistoryEntry = {
 
 export const HISTORY_KEY = "icfes_simulacro_history";
 
-export function makeProgressKey(count: number, randomize: boolean): string {
+export function makeProgressKey(
+  areaId: string,
+  count: number,
+  randomize: boolean
+): string {
+  return `icfes_simulacro_progress_${areaId}_${count}_${
+    randomize ? "rand" : "fixed"
+  }`;
+}
+
+export function makeLegacyProgressKey(count: number, randomize: boolean): string {
   return `icfes_simulacro_progress_${count}_${randomize ? "rand" : "fixed"}`;
 }
 

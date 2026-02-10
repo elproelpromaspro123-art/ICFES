@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { Calculator, BookOpen, Globe2, FlaskConical, Languages, Lock, ArrowRight } from "lucide-react";
@@ -14,8 +14,24 @@ const areas = [
     questions: 50,
     description: "Álgebra, geometría, estadística y más",
   },
-  { name: "Lectura Crítica", icon: BookOpen, available: false, color: "from-red-400 to-red-600", description: "Comprensión e interpretación textual" },
-  { name: "Sociales y Ciudadanas", icon: Globe2, available: false, color: "from-green-400 to-green-600", description: "Pensamiento social y ciudadano" },
+  {
+    name: "Lectura Crítica",
+    icon: BookOpen,
+    available: true,
+    href: "/simulacro/lectura",
+    color: "from-red-400 to-red-600",
+    questions: 49,
+    description: "Comprensión e interpretación textual",
+  },
+  {
+    name: "Sociales y Ciudadanas",
+    icon: Globe2,
+    available: true,
+    href: "/simulacro/sociales",
+    color: "from-green-400 to-green-600",
+    questions: 48,
+    description: "Pensamiento social y ciudadano",
+  },
   { name: "Ciencias Naturales", icon: FlaskConical, available: false, color: "from-purple-400 to-purple-600", description: "Competencias científicas" },
   { name: "Inglés", icon: Languages, available: false, color: "from-orange-400 to-orange-600", description: "Comprensión lectora en inglés" },
 ];
