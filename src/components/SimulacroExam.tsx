@@ -81,7 +81,7 @@ function getScoreLabel(score: number): string {
 }
 
 const fractionRegex =
-  /([A-Za-zÁÉÍÓÚÑáéíóúñ0-9().,°√·×÷+^πθ\-]+)\s*\/\s*([A-Za-zÁÉÍÓÚÑáéíóúñ0-9().,°√·×÷+^πθ\-]+)/g;
+  /([A-Za-zÁÉÍÓÚÑáéíóúñ0-9().,°v·×÷+^p?\-]+)\s*\/\s*([A-Za-zÁÉÍÓÚÑáéíóúñ0-9().,°v·×÷+^p?\-]+)/g;
 
 function applyAutoBold(line: string): string {
   if (line.includes("**")) return line;
@@ -93,6 +93,9 @@ function applyAutoBold(line: string): string {
     /^(Restricción [A-Z0-9]+:)/,
     /^(Juego \d+\.)/,
     /^(Recuerde que:)/,
+    /^(RESPONDA.*)/,
+    /^(Fuente:|FUENTE:)/,
+    /^(Tomado.*)/,
   ];
   let output = line;
   for (const pattern of patterns) {
@@ -116,7 +119,7 @@ function splitIntoSentenceBlocks(text: string): string[] {
   let i = 0;
 
   while (i < text.length) {
-    let char = text[i];
+    const char = text[i];
     buffer += char;
 
     if (char === "." || char === "!" || char === "?") {
@@ -612,7 +615,7 @@ export default function SimulacroExam({
                             : "Sin responder"}
                         </span>
                       </div>
-                      <div className="text-base text-gray-700 mb-3 max-w-[65ch]">
+                      <div className="text-base text-gray-700 mb-3 max-w-[80ch]">
                         {renderFormattedText(q.text, `review-q-${q.id}`)}
                       </div>
 
@@ -622,7 +625,7 @@ export default function SimulacroExam({
                             {q.groupLabel}
                           </p>
                           {q.groupText && (
-                            <div className="text-sm sm:text-base text-gray-700 max-w-[65ch]">
+                            <div className="text-sm sm:text-base text-gray-700 max-w-[80ch]">
                               {renderFormattedText(q.groupText, `review-gt-${q.id}`)}
                             </div>
                           )}
@@ -688,7 +691,7 @@ export default function SimulacroExam({
                               <span className="font-bold shrink-0 mt-0.5">
                                 {opt.letter}.
                               </span>
-                              <div className="max-w-[65ch]">
+                              <div className="max-w-[80ch]">
                                 {renderFormattedText(
                                   opt.text,
                                   `review-opt-${q.id}-${opt.letter}`
@@ -709,7 +712,7 @@ export default function SimulacroExam({
                         <p className="text-xs font-semibold text-icfes-blue mb-1">
                           Explicación:
                         </p>
-                        <div className="text-sm text-gray-700 max-w-[65ch]">
+                        <div className="text-sm text-gray-700 max-w-[80ch]">
                           {renderFormattedText(q.explanation, `review-exp-${q.id}`)}
                         </div>
                       </div>
@@ -842,7 +845,7 @@ export default function SimulacroExam({
       </AnimatePresence>
 
       {/* Question */}
-      <div className="flex-1 max-w-3xl mx-auto px-4 py-6 w-full">
+      <div className="flex-1 max-w-4xl mx-auto px-4 py-6 w-full">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentQ.id}
@@ -857,7 +860,7 @@ export default function SimulacroExam({
                   {currentQ.groupLabel}
                 </p>
                 {currentQ.groupText && (
-                  <div className="text-sm sm:text-base text-gray-700 mb-3 max-w-[65ch]">
+                  <div className="text-sm sm:text-base text-gray-700 mb-3 max-w-[80ch]">
                     {renderFormattedText(currentQ.groupText, `main-gt-${currentQ.id}`)}
                   </div>
                 )}
@@ -881,7 +884,7 @@ export default function SimulacroExam({
               </summary>
               <div className="mt-3">
                 {currentQ.groupText && (
-                    <div className="text-sm sm:text-base text-gray-700 mb-3 max-w-[65ch]">
+                    <div className="text-sm sm:text-base text-gray-700 mb-3 max-w-[80ch]">
                       {renderFormattedText(
                         currentQ.groupText,
                         `main-gt-${currentQ.id}-details`
@@ -905,7 +908,7 @@ export default function SimulacroExam({
                 <span className="shrink-0 w-8 h-8 rounded-full bg-icfes-blue text-white flex items-center justify-center text-sm font-bold">
                   {currentIndex + 1}
                 </span>
-                <div className="text-base sm:text-lg text-gray-800 flex-1 max-w-[65ch]">
+                <div className="text-base sm:text-lg text-gray-800 flex-1 max-w-[80ch]">
                   {renderFormattedText(currentQ.text, `main-q-${currentQ.id}`)}
                 </div>
               </div>
@@ -960,7 +963,7 @@ export default function SimulacroExam({
                       >
                         {opt.letter}
                       </span>
-                      <div className="pt-0.5 max-w-[65ch]">
+                      <div className="pt-0.5 max-w-[80ch]">
                         {renderFormattedText(
                           opt.text,
                           `main-opt-${currentQ.id}-${opt.letter}`
@@ -977,7 +980,7 @@ export default function SimulacroExam({
 
       {/* Bottom nav */}
       <div className="bg-white border-t shadow-sm sticky bottom-0 exam-surface">
-        <div className="max-w-3xl mx-auto px-2 sm:px-4 py-3 sm:py-3 flex items-center justify-between gap-2">
+        <div className="max-w-4xl mx-auto px-2 sm:px-4 py-3 sm:py-3 flex items-center justify-between gap-2">
           <button
             onClick={() => setCurrentIndex((i) => Math.max(0, i - 1))}
             disabled={currentIndex === 0}
@@ -1027,6 +1030,9 @@ export default function SimulacroExam({
     </div>
   );
 }
+
+
+
 
 
 

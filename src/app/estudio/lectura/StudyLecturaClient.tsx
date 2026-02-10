@@ -3,6 +3,7 @@
 import { BookOpen } from "lucide-react";
 import StudyAreaClient from "@/components/StudyAreaClient";
 import { Question } from "@/data/types";
+import { studyGuides } from "@/data/study-guides";
 
 const loadLecturaQuestions = () =>
   import("@/data/questions-lectura").then(
@@ -19,6 +20,7 @@ export default function StudyLecturaClient() {
       icon={BookOpen}
       iconGradient="from-red-400 to-red-600"
       loadQuestions={loadLecturaQuestions}
+      guide={studyGuides.lectura}
     />
   );
 }

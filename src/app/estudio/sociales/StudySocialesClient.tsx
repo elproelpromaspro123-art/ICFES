@@ -3,6 +3,7 @@
 import { Globe2 } from "lucide-react";
 import StudyAreaClient from "@/components/StudyAreaClient";
 import { Question } from "@/data/types";
+import { studyGuides } from "@/data/study-guides";
 
 const loadSocialesQuestions = () =>
   import("@/data/questions-sociales").then(
@@ -19,6 +20,7 @@ export default function StudySocialesClient() {
       icon={Globe2}
       iconGradient="from-green-400 to-green-600"
       loadQuestions={loadSocialesQuestions}
+      guide={studyGuides.sociales}
     />
   );
 }

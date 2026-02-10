@@ -3,6 +3,7 @@
 import { Calculator } from "lucide-react";
 import StudyAreaClient from "@/components/StudyAreaClient";
 import { Question } from "@/data/types";
+import { studyGuides } from "@/data/study-guides";
 
 const loadMathQuestions = () =>
   import("@/data/questions").then(
@@ -19,6 +20,7 @@ export default function StudyMatematicasClient() {
       icon={Calculator}
       iconGradient="from-blue-500 to-blue-700"
       loadQuestions={loadMathQuestions}
+      guide={studyGuides.matematicas}
     />
   );
 }

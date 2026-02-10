@@ -140,7 +140,7 @@ html {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
-  line-height: 1.65;
+  line-height: 1.75;
 }
 
 .formatted-paragraph .fraction {

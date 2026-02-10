@@ -23,7 +23,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Respuesta correcta: B."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Cuál de las siguientes afirmaciones sobre la relación entre las opiniones presentadas NO es correcta?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es B porque Son complementarias, porque ambas promueven el vegetarianismo cuando argumentan la obligación de proteger a los animales. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 2,
@@ -47,7 +47,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "A",
-    "explanation": "Respuesta correcta: A."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿cuál contiene un argumento válido en contra de las afirmaciones de los habitantes del barrio de clase media?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es A porque Quienes ejercen la delincuencia en una zona pobre de la ciudad pueden no ser habitantes de esa zona. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 3,
@@ -71,7 +71,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "D",
-    "explanation": "Respuesta correcta: D."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Cuál de los siguientes enunciados del rector contiene un prejuicio cuestionable?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es D porque Los homosexuales pueden enseñar, siempre y cuando controlen su comportamiento en clase y no afecte la orientación sexual de los estudiantes. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 4,
@@ -95,7 +95,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Respuesta correcta: B."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Cuál es el orden cronológico de estos hechos?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es B porque 3, 2, 1 y 4. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 5,
@@ -119,7 +119,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Son similares las dos posiciones frente a la legalización de las drogas?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es C porque No, porque una plantea que la lucha contra el narcotráfico debe ser por la vía de la represión y la otra por la vía de la prevención del consumo. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 6,
@@ -143,7 +143,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Esta solución se ajusta a los intereses de todos los vecinos?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es C porque No, porque el ruido de las fiestas afecta más a los propietarios del primer piso cercanos al salón comunal. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 7,
@@ -167,7 +167,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Respuesta correcta: B."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Cómo se ajusta esta solución a los intereses de la constructora y de los ambientalistas?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es B porque La solución beneficia solamente a una de las partes en detrimento del medio ambiente y del ecosistema de humedal. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 8,
@@ -191,7 +191,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Cuál de los siguientes mecanismos puede ser usado para modificar la Constitución Política de Colombia?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es C porque Un referendo. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 9,
@@ -215,7 +215,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Qué tipo de relación se puede establecer entre las propuestas de solución al problema de la urbanización en América Latina?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es C porque Complementariedad, pues todas las soluciones se enfocan hacia la mitigación de los costos sociales y económicos de la expansión urbana. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 10,
@@ -239,7 +239,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "A",
-    "explanation": "Respuesta correcta: A."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿El presidente puede hacer esto?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es A porque Sí, porque los referendos permiten reformar la Constitución. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 11,
@@ -263,7 +263,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Es legalmente viable el procedimiento realizado por el ciudadano?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es C porque No, porque la Constitución Política de Colombia establece que se requiere el 5 % del censo electoral para presentar una iniciativa popular que reforme una ley. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 12,
@@ -287,7 +287,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿cuál de las siguientes afirmaciones explica las denuncias contra el alcalde?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es C porque Los denunciantes tienen evidencias para afirmar que el alcalde abusó de su poder. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 13,
@@ -311,7 +311,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿es posible que durante el estado de excepción se altere la distribución del poder público?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es C porque Sí, porque la Rama Judicial debe ser la única encargada de ordenar el arresto de personas por medio de una orden judicial. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 14,
@@ -335,7 +335,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "D",
-    "explanation": "Respuesta correcta: D."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿cuál de las ramas del poder puede ejercer control político a través de citaciones y mociones de censura?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es D porque La Rama Legislativa. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 15,
@@ -359,7 +359,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Respuesta correcta: B."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿cuál de los siguientes es el adecuado para que el presidente pueda adelantar su iniciativa?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es B porque El referendo. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 16,
@@ -383,7 +383,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "A",
-    "explanation": "Respuesta correcta: A."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Qué periodo de la historia política colombiana se representa en este fragmento?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es A porque La Violencia entre 1948 y 1953 . responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 17,
@@ -407,7 +407,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿cuál de las siguientes razones explicaría que este fragmento pertenece al periodo del Frente Nacional?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es C porque Da cuenta del acuerdo realizado por los partidos tradicionales como salida a la crisis social producida por la violencia y los sectarismos bipartidistas de la década de los años 1950. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 18,
@@ -431,7 +431,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Respuesta correcta: B."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Cuál es el orden cronológico (del más antiguo al más reciente) de las revoluciones mencionadas?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es B porque Revolución mexicana, Revolución rusa, Revolución cubana, Revolución nicaragüense. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 19,
@@ -455,7 +455,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "D",
-    "explanation": "Respuesta correcta: D."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Por qué estas medidas pueden catalogarse como “neoliberales”?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es D porque Porque plantean reducir el tamaño del Estado y su participación en la regulación de actividades económicas. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 20,
@@ -479,7 +479,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Con cuál de los siguientes modelos es afín esta propuesta para mejorar la productividad económica?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es C porque Con el neoliberalismo, porque restringe el rol del Estado a la protección del mercado. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 21,
@@ -503,7 +503,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Cuál de los siguientes enunciados explica la postura crítica de este fragmento, frente al modelo neoliberal?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es C porque Se afirma que, sin la intervención del Estado, no es posible garantizarle buenas condiciones de vida a toda la población. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 22,
@@ -527,7 +527,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿en cuál de las siguientes condiciones se justificaría el uso del modelo proteccionista en un país?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es C porque Cuando importa un buen número de alimentos que se producen en su territorio. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 23,
@@ -551,7 +551,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Respuesta correcta: B."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿por qué el desplazamiento forzado permite comprender características propias del conflicto armado en Colombia?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es B porque Porque el desplazamiento forzado pone en evidencia, indirectamente, los intereses económicos de los actores en conflicto. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 24,
@@ -575,7 +575,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "D",
-    "explanation": "Respuesta correcta: D."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿quién elaboró este planteamiento?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es D porque Un paramilitar, porque afirma que fueron las acciones de la guerrilla las que obligaron a su organización a involucrarse en el conflicto. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 25,
@@ -599,7 +599,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Cuáles de esos problemas son causas del conflicto agrario en Colombia?\nPaso 2. Identifica la relacion causa-efecto que plantea el enunciado.\nPaso 3. La respuesta correcta es C porque 2 y 4. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 26,
@@ -623,7 +623,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "A",
-    "explanation": "Respuesta correcta: A."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿En cuál de las siguientes situaciones, se puede presentar una acción de tutela?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es A porque Cuando se vulnera el derecho a la salud, porque está en riesgo la vida de la persona. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 27,
@@ -647,7 +647,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Respuesta correcta: B."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Cuál es probablemente la principal causa de este fenómeno?\nPaso 2. Identifica la relacion causa-efecto que plantea el enunciado.\nPaso 3. La respuesta correcta es B porque La búsqueda de mejor calidad de vida en barrios tranquilos. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 28,
@@ -671,7 +671,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Por qué estas movilizaciones y acciones que visibilizan a personas con orientación sexual diferente, son fundamentales en el desarrollo de la igualdad y del respeto por la diferencia?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es C porque Porque promulgan y reivindican los derechos y se denuncia la exclusión. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 29,
@@ -695,7 +695,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "A",
-    "explanation": "Respuesta correcta: A."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿cuál de las siguientes afirmaciones es una consecuencia de la revolución industrial?\nPaso 2. Identifica la relacion causa-efecto que plantea el enunciado.\nPaso 3. La respuesta correcta es A porque El traslado del campo a la ciudad y el surgimiento del proletariado urbano. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 30,
@@ -719,7 +719,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "D",
-    "explanation": "Respuesta correcta: D."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿cuál es la principal utilidad de una Constitución?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es D porque Establecer un orden jurídico y un marco normativo que delimita el poder del Estado y establece qué es legal. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 31,
@@ -743,7 +743,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿cuál de los siguientes hechos podría ser un efecto de la posición del funcionario?\nPaso 2. Identifica el proposito comunicativo y elige la opcion coherente con ese objetivo.\nPaso 3. La respuesta correcta es C porque Que algunas personas no reconozcan la gravedad de los actos de violencia en contra de las mujeres. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 32,
@@ -767,7 +767,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Son semejantes las posiciones de la organización estatal y la organización ambientalista?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es C porque Son diferentes, porque una defiende al ecosistema aunque esto signifique no poder dar tierras a los campesinos y la otra quiere ayudarlos, aunque se dañe el ecosistema. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 33,
@@ -791,7 +791,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿En qué consiste esta medida?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es C porque En producir internamente los bienes que tradicionalmente se traían del exterior. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 34,
@@ -815,7 +815,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "D",
-    "explanation": "Respuesta correcta: D."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Cuál de las siguientes situaciones está de acuerdo con lo anterior?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es D porque En el país D , el gobierno aumenta los impuestos de patrimonio y renta. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 35,
@@ -839,7 +839,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "D",
-    "explanation": "Respuesta correcta: D."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Qué propone el socialismo para alcanzar este propósito?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es D porque Lograr la tenencia colectiva de los medios de producción y la consolidación del poder político en las clases trabajadoras. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 36,
@@ -863,7 +863,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Por qué podría fallar la implementación de este modelo en las otras ciudades?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es C porque Porque las necesidades de la población, lo que se demanda, pueden ser muy distintas. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 37,
@@ -887,7 +887,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Qué situación genera esta decisión?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es C porque Que se vulnere el derecho de los estudiantes a tener y utilizar mecanismos de participación. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 38,
@@ -911,7 +911,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿cómo procedió el gobierno en esta situación?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es C porque Mostró respeto por la comunidad indígena en función del bien común. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 39,
@@ -935,7 +935,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Respuesta correcta: B."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿el profesor está vulnerando algún derecho?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es B porque Sí, ya que con su actuación el profesor está vulnerando el derecho a la igualdad. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 40,
@@ -959,7 +959,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿cuál es la razón que mejor sustenta la decisión del Estado?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es C porque Proteger la diversidad étnica y cultural. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 41,
@@ -983,7 +983,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿qué deberían revisar los ciudadanos principalmente?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es C porque Los cambios en los índices de criminalidad desde que el alcalde se posesionó. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 42,
@@ -1007,7 +1007,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "D",
-    "explanation": "Respuesta correcta: D."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Cuál de los siguientes es el argumento más afín con la propuesta de legalización?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es D porque En los países productores la prohibición ha generado problemas sociales más graves que aquellos que se querían evitar con esta medida. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 43,
@@ -1031,7 +1031,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Qué intereses está favoreciendo esta declaración?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es C porque Los de los agresores, porque está dándoles una justificación a lo que hacen. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 44,
@@ -1055,7 +1055,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Respuesta correcta: B."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿qué intereses en conflicto deben ser tenidos en cuenta?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es B porque Los de los residentes que buscan su seguridad, y los de los demás habitantes de la ciudad que dejarían de tener acceso a las vías y otros espacios públicos de los sectores encerrados. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 45,
@@ -1079,7 +1079,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "A",
-    "explanation": "Respuesta correcta: A."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Cuál de las siguientes acciones es coherente con este fallo?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es A porque Ordenarle al Ejército la entrega de la libreta militar al soldado y su inmediata desvinculación de la institución. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 46,
@@ -1103,7 +1103,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "D",
-    "explanation": "Respuesta correcta: D."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿cuál podría evidenciar una vulneración al derecho a la educación?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es D porque Asignar a los estudiantes a escuelas no inundadas y reiniciar las clases con los niños que puedan asistir. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 47,
@@ -1127,7 +1127,7 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿cuáles dimensiones están en conflicto?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es C porque La económica y la ambiental. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 48,
@@ -1151,6 +1151,6 @@ export const socialesQuestions: Question[] = [
       }
     ],
     "correctAnswer": "D",
-    "explanation": "Respuesta correcta: D."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿cuál sería un efecto de la expulsión de los vendedores?\nPaso 2. Identifica la relacion causa-efecto que plantea el enunciado.\nPaso 3. La respuesta correcta es D porque La disminución de los ingresos de las familias que dependían de esas ventas. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   }
 ];

@@ -23,7 +23,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Respuesta correcta: B."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿en cuál de los siguientes contextos estaría inscrito más apropiadamente el pasaje anterior?\nPaso 2. Observa el tono, el destinatario y el tipo de texto para ubicar el contexto.\nPaso 3. La respuesta correcta es B porque En un discurso ofrecido a un grupo conformado por aficionados al estudio de asesinatos en la historia de la filosofía. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 2,
@@ -47,7 +47,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Respuesta correcta: B."
+    "explanation": "Paso 1. Identifica lo que se pregunta: conocedor del vallenato y\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es B porque señalar una posición discutible sobre el papel que desempeñaron las colitas en el origen del género. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 3,
@@ -71,7 +71,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: para asistir a diferentes piquerias, porque en este se hace referencia a\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es C porque un acordeonero que se encontraba de paso por un pueblo. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 4,
@@ -95,7 +95,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "D",
-    "explanation": "Respuesta correcta: D."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Cuál es el azul añil?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es D porque sensible y con angustias. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 5,
@@ -119,7 +119,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Respuesta correcta: B."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Cuál de los siguientes enunciados sintetiza mejor el contenido del primer párrafo?\nPaso 2. Resume la idea central y verifica que la opcion elegida la exprese sin agregar datos.\nPaso 3. La respuesta correcta es B porque Internet ha generado cambios en el concepto tradicional de límite, tal como lo define la etología y la antropología. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 6,
@@ -143,7 +143,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "A",
-    "explanation": "Respuesta correcta: A."
+    "explanation": "Paso 1. Identifica lo que se pregunta: fronteras físicas, hace referencia a\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es A porque los individuos de una misma cultura que viven en territorios diferentes. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 7,
@@ -167,7 +167,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿SERÁ QUE GOOGLE NOS ESTÁ VOLVIENDO ESTOOPIDOS? Durante los últimos años he tenido la incómoda sensación de que alguien (o algo) ha estado cacharreando con mi cerebro, rehaciendo la cartografía de mis circuitos neuronales, reprogramando mi memoria. No es que ya no pueda pensar (por lo menos hasta donde me doy cuenta), pero algo está cambiando. Ya no pienso como antes. Lo siento de manera muy acentuada cuando leo. Sumirme en un libro o un artículo largo solía ser una cosa fácil. La mera narrativa o los giros de los acontecimientos cautivaban mi mente y pasaba horas paseando por largos pasajes de prosa. Sin embargo, eso ya no me ocurre. Resulta que ahora, por el contrario, mi concentración se pierde tras leer apenas dos o tres páginas. Me pongo inquieto, pierdo el hilo, comienzo a buscar otra cosa que hacer. Es como si tuviera que forzar mi mente divagadora a volver sobre el texto. En dos palabras, la lectura profunda, que solía ser fácil, se ha vuelto una lucha. Y creo saber qué es lo que está ocurriendo. A estas alturas, llevo ya más de una década pasando mucho tiempo en línea, haciendo búsquedas y navegando, incluso, algunas veces, agregando material a las enormes bases de datos de internet. Como escritor, la red me ha caído del cielo. El trabajo de investigación, que antes me tomaba días inmerso en las secciones de publicaciones periódicas de las bibliotecas, ahora se puede hacer en cuestión de minutos. Las ventajas de un acceso tan instantáneo a esa increíble y rica reserva de información son muchísimas, y ya han sido debidamente descritas y aplaudidas. Pero tal ayuda tiene su precio. Como subrayó en la década del 60 el teórico de los medios de comunicación Marshall McLuhan, los medios no son meros canales pasivos por donde fluye información. Cierto, se encargan de suministrar los insumos del pensamiento, pero también configuran el proceso de pensamiento. Y lo que la red parece estar haciendo, por lo menos en mi caso, es socavar poco a poco mi capacidad de concentración y contemplación. Mi mente ahora espera asimilar información de la misma manera como la red la distribuye: en un vertiginoso flujo de partículas. Alguna vez fui buzo y me sumergía en océanos de palabras. Hoy en día sobrevuelo a ras sus aguas como en una moto acuática. Gracias a la omnipresencia del texto en internet, por no hablar de la popularidad de los mensajes escritos en los teléfonos celulares, es probable que hoy estemos leyendo cuantitativamente más de lo que leíamos en las décadas del 70 y 80 del siglo pasado, cuando la televisión era nuestro medio predilecto. Pero, sea lo que sea, se trata de otra forma de leer, y detrás subyace otra forma de pensar... Quizás incluso, una nueva manera de ser. La idea de que nuestra mente debiera operar como una máquina-procesadora-de-datos-de-alta- velocidad no solo está incorporada al funcionamiento de internet, sino que al mismo tiempo se trata del modelo empresarial imperante de la red. A mayor velocidad con la que navegamos en la red, a mayor número de enlaces sobre los que hacemos clic y el número de páginas que visitamos, mayores las oportunidades que Google y otras compañías tienen para recoger información sobre nosotros y nutrirnos con anuncios publicitarios. Para bien de sus intereses económicos, les conviene distraernos a como dé lugar. Tomado y adaptado de: Carr, Nicholas. “Será que Google nos está volviendo estoopidos?\nPaso 2. Identifica el proposito comunicativo y elige la opcion coherente con ese objetivo.\nPaso 3. La respuesta correcta es C porque denuncian las motivaciones de varias compañías al respecto de cómo se maneja la información en Internet. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 8,
@@ -191,7 +191,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Respuesta correcta: B."
+    "explanation": "Paso 1. Identifica lo que se pregunta: Esta frase, dentro de la globalidad del texto, es\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es B porque una conclusión del texto. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 9,
@@ -215,7 +215,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿qué posiciones políticas se identifican como democráticas?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es C porque La mayoría de posiciones políticas existentes. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 10,
@@ -239,7 +239,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Cuál de las siguientes afirmaciones se infiere del texto (i)?\nPaso 2. Deduce la respuesta a partir de pistas del texto, sin agregar supuestos externos.\nPaso 3. La respuesta correcta es C porque Con una conversación corta con el votante medio, cualquier persona se da cuenta de que la democracia no funciona. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 11,
@@ -263,7 +263,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Cuál de las siguientes opciones describe mejor la relación entre el contenido del texto y el título de la obra de la que se extrajo?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es C porque El texto crítica concepciones del conocimiento científico, el cual se ha concebido como resultado de un método. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 12,
@@ -287,7 +287,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Respuesta correcta: B."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿cuál de las siguientes afirmaciones refleja de manera más directa la influencia de las ideas liberales?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es B porque Toda teoría particular, todo cuento de hadas, todo mito, forman parte del conocimiento. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 13,
@@ -311,7 +311,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "D",
-    "explanation": "Respuesta correcta: D."
+    "explanation": "Paso 1. Identifica lo que se pregunta: El niño intenta justificar el alto precio de la limonada recurriendo a\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es D porque su propia versión de la economía. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 14,
@@ -335,7 +335,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Respuesta correcta: B.",
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Cuál de los siguientes enunciados describe mejor la caricatura?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es B porque El linchamiento de un ángel. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado.",
     "image": "/images/lectura/pagina-17.png"
   },
   {
@@ -360,7 +360,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Respuesta correcta: B."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Cuál de las siguientes afirmaciones es compatible con las políticas del Partido?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es B porque La individualidad debe ser eliminada. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 16,
@@ -384,7 +384,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "D",
-    "explanation": "Respuesta correcta: D."
+    "explanation": "Paso 1. Identifica lo que se pregunta: La frase “figúrate una bota aplastando un rostro humano...incesantemente”\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es D porque ilustra las condiciones de los ciudadanos bajo el régimen. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 17,
@@ -408,7 +408,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Respuesta correcta: B."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿cuál de las siguientes palabras es un sinónimo de la palabra ‘irrecusable’?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es B porque Concluyente. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 18,
@@ -432,7 +432,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Respuesta correcta: B."
+    "explanation": "Paso 1. Identifica lo que se pregunta: El anterior resumen se puede describir como inadecuado porque\nPaso 2. Resume la idea central y verifica que la opcion elegida la exprese sin agregar datos.\nPaso 3. La respuesta correcta es B porque se centra en un tipo particular de turistas y no en los turistas en general. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 19,
@@ -456,7 +456,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: por Aguado corresponde a\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es C porque la etapa de “conquista” de los territorios que se anexarían a la colonia neogranadina, pues la descripción es parte de un relato de una campaña militar. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 20,
@@ -480,7 +480,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Respuesta correcta: B."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Cuál de los siguientes títulos se ajusta mejor al contenido del texto?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es B porque Fray Pedro de Aguado y la construcción retórica del indígena. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 21,
@@ -504,7 +504,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C.",
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿En cuál de los siguientes contextos se inscribe mejor la caricatura?\nPaso 2. Observa el tono, el destinatario y el tipo de texto para ubicar el contexto.\nPaso 3. La respuesta correcta es C porque Humor gráfico. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado.",
     "image": "/images/lectura/pagina-23.png"
   },
   {
@@ -529,7 +529,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "A",
-    "explanation": "Respuesta correcta: A."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Cuál de los siguientes es un ejemplo que menciona el autor para apoyar su posición frente a los Gobiernos?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es A porque La guerra con México. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 23,
@@ -553,7 +553,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: diferencia entre un sistema filosófico y otro consiste en la manera de\nPaso 2. Resume la idea central y verifica que la opcion elegida la exprese sin agregar datos.\nPaso 3. La respuesta correcta es C porque esquivar los problemas. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 24,
@@ -577,7 +577,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Qué prejuicio cuestiona la autora por medio del enunciado anterior?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es C porque Las explicaciones científicas sobre el comportamiento no deben tener en cuenta la intención al explicar la conducta. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 25,
@@ -601,7 +601,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Respuesta correcta: B."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Cuál de los siguientes enunciados se contradice con la tesis central del texto?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es B porque Alejarnos de alguien no depende de nosotros mismos. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 26,
@@ -625,7 +625,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: En el texto, el autor hace referencia a Rubens para mostrar que\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es C porque algunos artistas plasman en sus obras lo que nos gusta ver en la realidad. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 27,
@@ -649,7 +649,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Respuesta correcta: B."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Cuál de los siguientes enunciados expresa un juicio de valor presente en el texto?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es B porque Los golfillos del pintor español Murillo tienen gran encanto. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 28,
@@ -673,7 +673,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Cuál de los siguientes títulos podría ser el más adecuado para el texto anterior?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es C porque La representación de la belleza en el arte. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 29,
@@ -697,7 +697,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "A",
-    "explanation": "Respuesta correcta: A."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Cuál de las siguientes afirmaciones contradice las ideas que presenta el autor?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es A porque Algunas personas actúan justamente a pesar de poder actuar de manera injusta. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 30,
@@ -721,7 +721,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Respuesta correcta: B."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿cuál presenta un supuesto subyacente a la afirmación “Todo hombre piensa que la injusticia le brinda más ventajas individuales que la justicia, y está en lo cierto, si habla de acuerdo con esta teoría”?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es B porque La justicia, al igual que la injusticia, brinda ventajas individuales. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 31,
@@ -745,7 +745,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "D",
-    "explanation": "Respuesta correcta: D."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Cuál de las siguientes afirmaciones constituye una razón a favor de la tesis principal del texto anterior, a saber, que cuando alguien actúa justamente lo hace por obligación y no voluntariamente?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es D porque Siempre que una persona cuente con la libertad para cometer injusticias lo hará. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 32,
@@ -769,7 +769,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Respuesta correcta: B."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Cuál de las siguientes afirmaciones sintetiza adecuadamente las ideas contenidas en el primer párrafo?\nPaso 2. Resume la idea central y verifica que la opcion elegida la exprese sin agregar datos.\nPaso 3. La respuesta correcta es B porque El que alguien sea justo resulta de una imposición, pues toda persona sin las restricciones y exigencias de la ley buscará satisfacer sus deseos. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 33,
@@ -793,7 +793,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Respuesta correcta: B."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿qué propósito general tiene el autor al introducir el relato sobre el anillo de Giges, y cómo lo alcanza?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es B porque Convencer a la audiencia de que todo hombre cometerá injusticias cuando tenga la oportunidad. Así lo hizo Giges una vez descubrió el poder que le otorgaba el anillo. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 34,
@@ -817,7 +817,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: Para el autor, el amor o el enamoramiento son\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es C porque ideas solo recientemente vinculadas al matrimonio y a la familia. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 35,
@@ -841,7 +841,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "D",
-    "explanation": "Respuesta correcta: D."
+    "explanation": "Paso 1. Identifica lo que se pregunta: La función del conector “sin embargo” del penúltimo párrafo es\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es D porque contrastar la información anterior sin llegar a invalidarla. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 36,
@@ -865,7 +865,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: por\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es C porque aporte patrimonial responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 37,
@@ -889,7 +889,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "D",
-    "explanation": "Respuesta correcta: D."
+    "explanation": "Paso 1. Identifica lo que se pregunta: El tercer párrafo del texto\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es D porque provee un ejemplo de que la asociación entre el amor y el matrimonio no es algo propio de todos los tiempos y culturas. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 38,
@@ -913,7 +913,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Respuesta correcta: B."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Cuál de los siguientes enunciados apoya la idea de que el amor maduro y sincero no siempre ha sido considerado como la base de la familia?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es B porque La idea del amor como la razón que ha de llevar al matrimonio surgió con el movimiento romántico en el siglo XVIII. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 39,
@@ -937,7 +937,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "A",
-    "explanation": "Respuesta correcta: A."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Cuál de los siguientes ejemplos ilustra la idea de la familia como una institución política y económica?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es A porque En la Edad Media la mujer aportaba una dote en el momento de casarse. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 40,
@@ -961,7 +961,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Respuesta correcta: B."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿Qué implicación sobre el matrimonio entre los fulbes africanos puede derivarse a partir de lo dicho por el autor?\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es B porque Que en esa comunidad el amor no es una condición necesaria para el matrimonio. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 41,
@@ -985,7 +985,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿qué se puede concluir acerca del matrimonio?\nPaso 2. Deduce la respuesta a partir de pistas del texto, sin agregar supuestos externos.\nPaso 3. La respuesta correcta es C porque Que es una institución que varía dependiendo del contexto histórico y social. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 42,
@@ -1009,7 +1009,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "A",
-    "explanation": "Respuesta correcta: A."
+    "explanation": "Paso 1. Identifica lo que se pregunta: tránsito”. En este enunciado, la conjunción ‘a pesar de’ cumple la función de\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es A porque resaltar que el índice de muertes por accidente de tránsito en países de ingresos medios es bastante elevado dadas sus condiciones particulares. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 43,
@@ -1033,7 +1033,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: Esta descripción es insatisfactoria porque\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es C porque menciona información que no está presente en la infografía. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 44,
@@ -1057,7 +1057,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "D",
-    "explanation": "Respuesta correcta: D."
+    "explanation": "Paso 1. Identifica lo que se pregunta: hubiera estado desplazándose\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es D porque en otro tipo de vehículo. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 45,
@@ -1081,7 +1081,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: inferir\nPaso 2. Deduce la respuesta a partir de pistas del texto, sin agregar supuestos externos.\nPaso 3. La respuesta correcta es C porque cuál es el riesgo de morir en un accidente de tránsito según la zona geográfica. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 46,
@@ -1105,7 +1105,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ingresos medios, la de los países de ingresos altos\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es C porque es más educada en materia vial. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 47,
@@ -1129,7 +1129,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "A",
-    "explanation": "Respuesta correcta: A."
+    "explanation": "Paso 1. Identifica lo que se pregunta: el texto\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es A porque ilustran la información presentada. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 48,
@@ -1153,7 +1153,7 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "A",
-    "explanation": "Respuesta correcta: A."
+    "explanation": "Paso 1. Identifica lo que se pregunta: como propósito\nPaso 2. Localiza en el texto la idea que responde a ese pedido.\nPaso 3. La respuesta correcta es A porque sensibilizar al espectador sobre los riesgos de morir en un accidente de tránsito. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   },
   {
     "id": 49,
@@ -1177,6 +1177,6 @@ export const lecturaQuestions: Question[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Respuesta correcta: C."
+    "explanation": "Paso 1. Identifica lo que se pregunta: ¿a cuál de los siguientes contextos se adecuaría mejor la infografía?\nPaso 2. Observa el tono, el destinatario y el tipo de texto para ubicar el contexto.\nPaso 3. La respuesta correcta es C porque Una campaña diseñada para promover la adquisición de seguros de vida. responde directamente a lo solicitado.\nPaso 4. Las demas opciones no responden exactamente a la pregunta o se apartan del criterio del enunciado."
   }
 ];

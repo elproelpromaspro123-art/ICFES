@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import Image from "next/image";
@@ -15,6 +15,7 @@ import {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Question } from "@/data/types";
+import { StudyGuide } from "@/data/study-guides";
 
 interface Props {
   areaId: string;
@@ -24,6 +25,7 @@ interface Props {
   icon: LucideIcon;
   iconGradient: string;
   loadQuestions: () => Promise<Question[]>;
+  guide?: StudyGuide;
 }
 
 const fractionRegex = /([^\s/]+)\s*\/\s*([^\s/]+)/g;
@@ -38,6 +40,9 @@ function applyAutoBold(line: string): string {
     /^(Restricci[o\u00f3]n [A-Z0-9]+:)/,
     /^(Juego \d+\.)/,
     /^(Recuerde que:)/,
+    /^(RESPONDA.*)/,
+    /^(Fuente:|FUENTE:)/,
+    /^(Tomado.*)/,
   ];
   let output = line;
   for (const pattern of patterns) {
@@ -209,6 +214,7 @@ export default function StudyAreaClient({
   icon: Icon,
   iconGradient,
   loadQuestions,
+  guide,
 }: Props) {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [loading, setLoading] = useState(true);
@@ -278,6 +284,51 @@ export default function StudyAreaClient({
             {areaDescription}
           </p>
         </div>
+
+        {guide && (
+          <section className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8 mb-8 exam-surface">
+            <div className="flex items-center justify-between flex-wrap gap-3 mb-4">
+              <h2 className="text-lg sm:text-xl font-bold text-icfes-blue">
+                {guide.title}
+              </h2>
+              <span className="text-xs text-gray-400">
+                Resumen guiado del simulacro
+              </span>
+            </div>
+            <div className="text-sm text-gray-600 mb-6 max-w-[80ch]">
+              {guide.intro}
+            </div>
+            <div className="space-y-4">
+              {guide.sections.map((section, index) => (
+                <div
+                  key={`${areaId}-guide-${index}`}
+                  className="border border-gray-100 rounded-xl p-4 sm:p-5"
+                >
+                  <h3 className="font-semibold text-gray-900 mb-2">
+                    {section.title}
+                  </h3>
+                  {section.body && (
+                    <div className="text-sm text-gray-600 max-w-[80ch]">
+                      {renderFormattedText(
+                        section.body,
+                        `guide-${areaId}-${index}`
+                      )}
+                    </div>
+                  )}
+                  {section.bullets && section.bullets.length > 0 && (
+                    <ul className="list-disc pl-5 mt-2 text-sm text-gray-600 space-y-1">
+                      {section.bullets.map((item, itemIndex) => (
+                        <li key={`${areaId}-guide-${index}-bullet-${itemIndex}`}>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 mb-8 exam-surface">
           <div className="flex flex-col lg:flex-row gap-4 lg:items-center lg:justify-between">
@@ -355,7 +406,7 @@ export default function StudyAreaClient({
                         {q.groupLabel}
                       </p>
                       {q.groupText && (
-                        <div className="text-sm sm:text-base text-gray-700 mb-3 max-w-[65ch]">
+                        <div className="text-sm sm:text-base text-gray-700 mb-3 max-w-[80ch]">
                           {renderFormattedText(q.groupText, `study-gt-${areaId}-${q.id}`)}
                         </div>
                       )}
@@ -377,7 +428,7 @@ export default function StudyAreaClient({
                       <span className="shrink-0 w-8 h-8 rounded-full bg-icfes-blue text-white flex items-center justify-center text-sm font-bold">
                         {q.id}
                       </span>
-                      <div className="text-base sm:text-lg text-gray-800 flex-1 max-w-[65ch]">
+                      <div className="text-base sm:text-lg text-gray-800 flex-1 max-w-[80ch]">
                         {renderFormattedText(q.text, `study-q-${areaId}-${q.id}`)}
                       </div>
                     </div>
@@ -422,7 +473,7 @@ export default function StudyAreaClient({
                             <span className="font-bold shrink-0 mt-0.5">
                               {opt.letter}.
                             </span>
-                            <div className="max-w-[65ch]">
+                            <div className="max-w-[80ch]">
                               {renderFormattedText(
                                 opt.text,
                                 `study-opt-${areaId}-${q.id}-${opt.letter}`
@@ -444,7 +495,7 @@ export default function StudyAreaClient({
                             Respuesta correcta: {q.correctAnswer}
                           </p>
                         </div>
-                        <div className="text-sm text-gray-700 max-w-[65ch]">
+                        <div className="text-sm text-gray-700 max-w-[80ch]">
                           {renderFormattedText(
                             q.explanation,
                             `study-exp-${areaId}-${q.id}`
@@ -464,3 +515,5 @@ export default function StudyAreaClient({
     </main>
   );
 }
+
+
