@@ -155,14 +155,37 @@ function splitIntoSentenceBlocks(text: string): string[] {
 }
 
 function renderFractions(text: string, keyBase: string): ReactNode[] {
+  const superscriptMap: Record<string, string> = {
+    "0": "⁰",
+    "1": "¹",
+    "2": "²",
+    "3": "³",
+    "4": "⁴",
+    "5": "⁵",
+    "6": "⁶",
+    "7": "⁷",
+    "8": "⁸",
+    "9": "⁹",
+    "-": "⁻",
+  };
+
+  const applySuperscripts = (input: string) =>
+    input.replace(/\^(-?\d+)/g, (_, exp: string) =>
+      exp
+        .split("")
+        .map((ch) => superscriptMap[ch] ?? ch)
+        .join("")
+    );
+
   const parts: ReactNode[] = [];
   let lastIndex = 0;
   let match: RegExpExecArray | null;
   let count = 0;
   const regex = new RegExp(fractionRegex);
-  while ((match = regex.exec(text)) !== null) {
+  const processed = applySuperscripts(text);
+  while ((match = regex.exec(processed)) !== null) {
     if (match.index > lastIndex) {
-      parts.push(text.slice(lastIndex, match.index));
+      parts.push(processed.slice(lastIndex, match.index));
     }
     parts.push(
       <span className="fraction" key={`${keyBase}-frac-${count}`}>
@@ -174,8 +197,8 @@ function renderFractions(text: string, keyBase: string): ReactNode[] {
     lastIndex = match.index + match[0].length;
     count += 1;
   }
-  if (lastIndex < text.length) {
-    parts.push(text.slice(lastIndex));
+  if (lastIndex < processed.length) {
+    parts.push(processed.slice(lastIndex));
   }
   return parts;
 }
@@ -1030,6 +1053,7 @@ export default function SimulacroExam({
     </div>
   );
 }
+
 
 
 

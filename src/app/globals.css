@@ -1,4 +1,4 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 
 :root {
   --icfes-blue: #003b71;
@@ -152,6 +152,19 @@ html {
   display: block;
 }
 
+.study-bullet-text .formatted-text {
+  display: inline;
+}
+
+.study-bullet-text .formatted-paragraph {
+  display: inline;
+}
+
+.study-bullet-text .formatted-line,
+.study-bullet-text .formatted-sentence {
+  display: inline;
+}
+
 #infografias,
 #simulacros,
 #estudio {
@@ -183,3 +196,4 @@ html {
   background-color: #fffdf6;
   border-color: #e7d9c8;
 }
+

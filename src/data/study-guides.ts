@@ -1,4 +1,4 @@
-export type StudyGuideSection = {
+﻿export type StudyGuideSection = {
   title: string;
   body?: string;
   bullets?: string[];
@@ -24,11 +24,11 @@ export const studyGuides: Record<string, StudyGuide> = {
       {
         title: "Formulas y relaciones que conviene dominar",
         bullets: [
-          "Porcentaje: valor_final = valor_inicial * (1 + p/100)",
+          "Porcentaje: valor final = valor inicial Ã— (1 + p/100)",
           "Proporcionalidad directa e inversa (regla de tres)",
-          "Areas: triangulo (b*h/2), rectangulo (b*h), circulo (pi*r^2)",
-          "Volumenes: prisma/caja (area_base*h), cilindro (pi*r^2*h), esfera (4/3*pi*r^3)",
-          "Probabilidad: casos favorables / casos posibles",
+          "Areas: triangulo A = (bÃ—h)/2, rectangulo A = bÃ—h, circulo A = Ï€ rÂ²",
+          "Volumenes: prisma/caja V = A de base Ã— h, cilindro V = Ï€ rÂ² Ã— h, esfera V = 4/3 Ï€ rÂ³",
+          "Probabilidad: P = casos favorables / casos posibles",
         ],
       },
       {
@@ -107,3 +107,5 @@ export const studyGuides: Record<string, StudyGuide> = {
     ],
   },
 };
+
+
