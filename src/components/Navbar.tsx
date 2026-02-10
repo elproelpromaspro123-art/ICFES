@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const navItems = [
   { href: "/#infografias", label: "Infografías", icon: BookOpen },
   { href: "/#simulacros", label: "Simulacros", icon: ClipboardList },
+  { href: "/#estudio", label: "Estudio", icon: BookOpen },
 ];
 
 export default function Navbar() {
