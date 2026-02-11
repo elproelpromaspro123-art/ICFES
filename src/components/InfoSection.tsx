@@ -190,7 +190,11 @@ export default function InfoSection() {
           <p className="text-gray-600 max-w-2xl mx-auto text-sm leading-relaxed">
             Un resumen completo de cada herramienta, sección y recurso disponible
             para que aproveches al máximo tu preparación para el{" "}
-            <Link href="/#" className="text-icfes-blue font-semibold hover:underline">
+            <Link
+              href="/#"
+              prefetch={false}
+              className="text-icfes-blue font-semibold hover:underline"
+            >
               ICFES Saber 11°
             </Link>.
           </p>
@@ -228,6 +232,7 @@ export default function InfoSection() {
                         <Link
                           key={hl.text}
                           href={hl.href}
+                          prefetch={false}
                           className="inline-flex items-center gap-1 text-xs font-medium bg-icfes-blue-lighter text-icfes-blue px-3 py-1.5 rounded-lg hover:bg-icfes-blue hover:text-white transition-colors"
                         >
                           {hl.text}
@@ -259,7 +264,12 @@ export default function InfoSection() {
             {tools.map((tool, i) => {
               const Icon = tool.icon;
               return (
-                <Link key={tool.label} href={tool.href} className="block">
+                <Link
+                  key={tool.label}
+                  href={tool.href}
+                  prefetch={false}
+                  className="block"
+                >
                   <motion.div
                     custom={i}
                     variants={fadeUp}
@@ -347,6 +357,7 @@ export default function InfoSection() {
             <div className="flex flex-wrap justify-center gap-3">
               <Link
                 href="/#simulacros"
+                prefetch={false}
                 className="inline-flex items-center gap-2 bg-icfes-yellow text-icfes-blue font-semibold px-5 py-2.5 rounded-lg hover:bg-yellow-400 transition-colors text-sm"
               >
                 <ClipboardList className="w-4 h-4" />
@@ -354,6 +365,7 @@ export default function InfoSection() {
               </Link>
               <Link
                 href="/#estudio"
+                prefetch={false}
                 className="inline-flex items-center gap-2 bg-white/15 text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-white/25 transition-colors text-sm border border-white/20"
               >
                 <GraduationCap className="w-4 h-4" />
@@ -361,6 +373,7 @@ export default function InfoSection() {
               </Link>
               <Link
                 href="/#infografias"
+                prefetch={false}
                 className="inline-flex items-center gap-2 bg-white/15 text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-white/25 transition-colors text-sm border border-white/20"
               >
                 <FileText className="w-4 h-4" />

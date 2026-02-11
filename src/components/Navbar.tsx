@@ -37,7 +37,11 @@ export default function Navbar() {
     <nav className="bg-white/95 text-icfes-blue shadow-sm sticky top-0 z-50 border-b border-icfes-blue/10 backdrop-blur">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="flex items-center gap-2 font-bold text-lg">
+          <Link
+            href="/"
+            prefetch={false}
+            className="flex items-center gap-2 font-bold text-lg"
+          >
             <Image
               src="/favicon.png"
               alt="Prepárate ICFES"
@@ -57,6 +61,7 @@ export default function Navbar() {
                 <Link
                   key={item.href}
                   href={item.href}
+                  prefetch={false}
                   className="hover:text-icfes-blue-light transition-colors flex items-center gap-1.5"
                 >
                   <Icon className="w-4 h-4" />
@@ -66,6 +71,7 @@ export default function Navbar() {
             })}
             <Link
               href="https://www.icfes.gov.co/caja-de-herramientas-saber-11/"
+              prefetch={false}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-icfes-blue text-white hover:bg-icfes-blue-light px-3 py-1.5 rounded-lg transition-colors text-xs flex items-center gap-1.5 shadow-sm"
@@ -114,6 +120,7 @@ export default function Navbar() {
                   >
                     <Link
                       href={item.href}
+                      prefetch={false}
                       onClick={() => setMenuOpen(false)}
                       role="menuitem"
                       className="flex items-center gap-3 py-3 px-4 rounded-xl hover:bg-icfes-blue/10 transition-colors text-base text-icfes-blue"
@@ -131,6 +138,7 @@ export default function Navbar() {
               >
                 <Link
                   href="https://www.icfes.gov.co/caja-de-herramientas-saber-11/"
+                  prefetch={false}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setMenuOpen(false)}

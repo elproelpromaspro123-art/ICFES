@@ -58,6 +58,7 @@ export default function StudySection() {
               >
                 <Link
                   href={area.href}
+                  prefetch={false}
                   className="block bg-white rounded-2xl p-6 border-2 border-icfes-blue/10 hover:border-icfes-blue shadow-sm hover:shadow-lg transition-all duration-300 group hover:-translate-y-0.5"
                 >
                   <div className="flex items-start gap-4">

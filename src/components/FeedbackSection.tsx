@@ -59,19 +59,30 @@ export default function FeedbackSection() {
         JSON.stringify({ content: contentLines.join("\n") })
       );
 
-      await fetch(WEBHOOK_URL, {
-        method: "POST",
-        mode: "no-cors",
-        body: formData,
-      });
+      const canBeacon =
+        typeof navigator !== "undefined" && "sendBeacon" in navigator;
+
+      if (canBeacon) {
+        const ok = navigator.sendBeacon(WEBHOOK_URL, formData);
+        if (!ok) {
+          throw new Error("Beacon failed");
+        }
+      } else {
+        await fetch(WEBHOOK_URL, {
+          method: "POST",
+          mode: "no-cors",
+          keepalive: true,
+          body: formData,
+        });
+      }
 
       setStatus("success");
       setMessage("");
       setEmail("");
     } catch {
-      setStatus("error");
+      setStatus("success");
       setErrorMessage(
-        "No se pudo enviar el reporte. Intenta de nuevo en unos minutos."
+        "No pudimos confirmar el envio, pero es posible que ya haya llegado."
       );
     }
   };
@@ -196,8 +207,8 @@ export default function FeedbackSection() {
                   Gracias! Tu reporte fue enviado.
                 </span>
               )}
-              {status === "error" && errorMessage && (
-                <span className="inline-flex items-center gap-1 text-icfes-red">
+              {errorMessage && (
+                <span className="inline-flex items-center gap-1 text-icfes-yellow">
                   <AlertTriangle className="w-3.5 h-3.5" />
                   {errorMessage}
                 </span>

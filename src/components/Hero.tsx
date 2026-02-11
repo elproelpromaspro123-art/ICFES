@@ -1,6 +1,12 @@
 "use client";
 
-import { ShieldCheck, ExternalLink, UserCheck, Heart } from "lucide-react";
+import {
+  ShieldCheck,
+  ExternalLink,
+  UserCheck,
+  Heart,
+  MonitorSmartphone,
+} from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -63,6 +69,26 @@ export default function Hero() {
             <h3 className="font-semibold text-sm mb-1">Hecho Para Ti</h3>
             <p className="text-xs text-white/80">
               Diseñado para ayudarte a alcanzar tu mejor puntaje en el Saber 11°.
+            </p>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 max-w-2xl mx-auto mb-8 border border-white/20 flex items-start gap-3 text-left"
+        >
+          <div className="w-9 h-9 rounded-lg bg-white/15 flex items-center justify-center shrink-0">
+            <MonitorSmartphone className="w-5 h-5 text-icfes-yellow" />
+          </div>
+          <div>
+            <p className="text-sm font-semibold text-white">
+              Recomendacion: usa navegador de PC
+            </p>
+            <p className="text-xs text-white/80">
+              Es mas comodo para leer y ver infografias. En celular tambien
+              funciona, pero la experiencia es mejor en pantalla grande.
             </p>
           </div>
         </motion.div>
