@@ -80,6 +80,69 @@ function getScoreLabel(score: number): string {
   return "Necesitas mejorar";
 }
 
+type InitialExamState = {
+  order: number[];
+  answers: Record<number, string>;
+  currentIndex: number;
+  elapsed: number;
+};
+
+function buildInitialExamState(params: {
+  allQuestions: Question[];
+  progressKey: string;
+  areaId: string;
+  questionCount: number;
+  randomize: boolean;
+}): InitialExamState {
+  const { allQuestions, progressKey, areaId, questionCount, randomize } = params;
+
+  if (typeof window === "undefined") {
+    return { order: [], answers: {}, currentIndex: 0, elapsed: 0 };
+  }
+
+  if (allQuestions.length === 0) {
+    return { order: [], answers: {}, currentIndex: 0, elapsed: 0 };
+  }
+
+  let data = safeParseJSON<SimulacroProgress>(
+    localStorage.getItem(progressKey)
+  );
+
+  if (!data && areaId === "matematicas") {
+    const legacyKey = makeLegacyProgressKey(questionCount, randomize);
+    const legacyData = safeParseJSON<SimulacroProgress>(
+      localStorage.getItem(legacyKey)
+    );
+    if (legacyData) {
+      data = { ...legacyData, areaId };
+      localStorage.setItem(progressKey, JSON.stringify(data));
+      localStorage.removeItem(legacyKey);
+    }
+  }
+
+  if (data && Array.isArray(data.order) && typeof data.currentIndex === "number") {
+    const safeOrder = data.order;
+    const maxIndex = Math.max(0, safeOrder.length - 1);
+    const currentIndex = Math.min(
+      Math.max(0, data.currentIndex || 0),
+      maxIndex
+    );
+    return {
+      order: safeOrder,
+      answers: data.answers || {},
+      currentIndex,
+      elapsed: data.elapsed || 0,
+    };
+  }
+
+  const base = randomize ? shuffleArray(allQuestions) : [...allQuestions];
+  const order = base
+    .slice(0, Math.min(questionCount, allQuestions.length))
+    .map((q) => q.id);
+
+  return { order, answers: {}, currentIndex: 0, elapsed: 0 };
+}
+
 export default function SimulacroExam({
   questionCount,
   randomize,
@@ -92,62 +155,36 @@ export default function SimulacroExam({
     [areaId, questionCount, randomize]
   );
 
-  const [questionOrder, setQuestionOrder] = useState<number[] | null>(null);
-  const [hydrated, setHydrated] = useState(false);
+  const [initialState] = useState(() =>
+    buildInitialExamState({
+      allQuestions,
+      progressKey,
+      areaId,
+      questionCount,
+      randomize,
+    })
+  );
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [answers, setAnswers] = useState<Record<number, string>>({});
-  const [elapsed, setElapsed] = useState(0);
+  const [questionOrder] = useState<number[]>(initialState.order);
+  const [answers, setAnswers] = useState<Record<number, string>>(
+    initialState.answers
+  );
+  const [currentIndex, setCurrentIndex] = useState(initialState.currentIndex);
+  const [elapsed, setElapsed] = useState(initialState.elapsed);
   const [finished, setFinished] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
-  const [readingMode, setReadingMode] = useState(false);
+  const [readingMode, setReadingMode] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return localStorage.getItem("icfes_reading_mode") === "true";
+  });
   const [showOnlyIncorrect, setShowOnlyIncorrect] = useState(false);
 
   const confirmRef = useRef<HTMLDivElement>(null);
 
   useFocusTrap(confirmRef, showConfirm);
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (allQuestions.length === 0) return;
-    setQuestionOrder(null);
-    setHydrated(false);
-
-    let data = safeParseJSON<SimulacroProgress>(
-      localStorage.getItem(progressKey)
-    );
-
-    if (!data && areaId === "matematicas") {
-      const legacyKey = makeLegacyProgressKey(questionCount, randomize);
-      const legacyData = safeParseJSON<SimulacroProgress>(
-        localStorage.getItem(legacyKey)
-      );
-      if (legacyData) {
-        data = { ...legacyData, areaId };
-        localStorage.setItem(progressKey, JSON.stringify(data));
-        localStorage.removeItem(legacyKey);
-      }
-    }
-
-    if (data && Array.isArray(data.order) && typeof data.currentIndex === "number") {
-      setQuestionOrder(data.order);
-      setAnswers(data.answers || {});
-      setCurrentIndex(data.currentIndex || 0);
-      setElapsed(data.elapsed || 0);
-      setHydrated(true);
-      return;
-    }
-
-    const base = randomize ? shuffleArray(allQuestions) : [...allQuestions];
-    const order = base
-      .slice(0, Math.min(questionCount, allQuestions.length))
-      .map((q) => q.id);
-    setQuestionOrder(order);
-    setHydrated(true);
-  }, [progressKey, questionCount, randomize, allQuestions, areaId]);
-
   const questions = useMemo(() => {
-    if (!questionOrder) return [];
+    if (questionOrder.length === 0) return [];
     const lookup = new Map(allQuestions.map((q) => [q.id, q]));
     return questionOrder
       .map((id) => lookup.get(id))
@@ -155,7 +192,8 @@ export default function SimulacroExam({
   }, [questionOrder, allQuestions]);
 
   useEffect(() => {
-    if (!hydrated || finished || !questionOrder) return;
+    if (typeof window === "undefined") return;
+    if (finished || questionOrder.length === 0) return;
     const payload: SimulacroProgress = {
       areaId,
       questionCount,
@@ -168,7 +206,6 @@ export default function SimulacroExam({
     };
     localStorage.setItem(progressKey, JSON.stringify(payload));
   }, [
-    hydrated,
     finished,
     questionOrder,
     answers,
@@ -187,13 +224,6 @@ export default function SimulacroExam({
   }, [finished]);
 
   useEffect(() => {
-    if (questions.length === 0) return;
-    if (currentIndex > questions.length - 1) {
-      setCurrentIndex(0);
-    }
-  }, [questions.length, currentIndex]);
-
-  useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape" && showConfirm) setShowConfirm(false);
     };
@@ -203,25 +233,19 @@ export default function SimulacroExam({
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const stored = localStorage.getItem("icfes_reading_mode");
-    if (stored) setReadingMode(stored === "true");
-  }, []);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
     localStorage.setItem("icfes_reading_mode", String(readingMode));
   }, [readingMode]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (finished || !hydrated) return;
+    if (finished || questionOrder.length === 0) return;
     const handleBeforeUnload = (event: BeforeUnloadEvent) => {
       event.preventDefault();
       event.returnValue = "";
     };
     window.addEventListener("beforeunload", handleBeforeUnload);
     return () => window.removeEventListener("beforeunload", handleBeforeUnload);
-  }, [finished, hydrated]);
+  }, [finished, questionOrder.length]);
 
   const selectAnswer = useCallback(
     (questionId: number, letter: string) => {
@@ -281,7 +305,7 @@ export default function SimulacroExam({
     ? questions.filter((q) => answers[q.id] !== q.correctAnswer)
     : questions;
 
-  if (!hydrated || questions.length === 0) {
+  if (questionOrder.length === 0 || questions.length === 0) {
     return (
       <div className={`min-h-screen ${rootClass} flex items-center justify-center px-4`}>
         <div className="bg-white border rounded-2xl shadow-sm px-6 py-5 text-sm text-gray-600">
@@ -852,7 +876,6 @@ export default function SimulacroExam({
     </div>
   );
 }
-
 
 
 

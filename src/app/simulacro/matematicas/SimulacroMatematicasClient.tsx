@@ -14,7 +14,7 @@ export default function SimulacroMatematicasClient() {
     <SimulacroAreaClient
       areaId="matematicas"
       areaLabel="Matemáticas"
-      areaDescription="50 preguntas verificadas y revisadas del examen Saber 11.°"
+      areaDescription="50 preguntas verificadas y revisadas del examen Saber 11°"
       totalQuestions={50}
       icon={Calculator}
       iconGradient="from-blue-500 to-blue-700"

@@ -1,5 +1,16 @@
 import { type ReactNode } from "react";
 
+const urlSplitRegex = /(https?:\/\/[^\s]+|www\.[^\s]+)/gi;
+const urlTestRegex = /^(https?:\/\/[^\s]+|www\.[^\s]+)$/i;
+
+function splitTrailingPunctuation(value: string) {
+  const match = value.match(/^(.*?)([).,;:!?]+)?$/);
+  return {
+    url: match?.[1] ?? value,
+    trailing: match?.[2] ?? "",
+  };
+}
+
 export const fractionRegex =
   /([A-Za-zÁÉÍÓÚÑáéíóúñ0-9.,°v·×÷+^p?\-]+)\s*\/\s*([A-Za-zÁÉÍÓÚÑáéíóúñ0-9.,°v·×÷+^p?\-]+)/g;
 
@@ -123,10 +134,40 @@ export function renderFractions(text: string, keyBase: string): ReactNode[] {
   return parts;
 }
 
+function renderLinksAndFractions(text: string, keyBase: string): ReactNode[] {
+  const parts = text.split(urlSplitRegex);
+  const nodes: ReactNode[] = [];
+
+  parts.forEach((part, index) => {
+    if (!part) return;
+    if (urlTestRegex.test(part)) {
+      const { url, trailing } = splitTrailingPunctuation(part);
+      const href = url.startsWith("http") ? url : `https://${url}`;
+      nodes.push(
+        <a
+          key={`${keyBase}-url-${index}`}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {url}
+        </a>
+      );
+      if (trailing) {
+        nodes.push(trailing);
+      }
+      return;
+    }
+    nodes.push(...renderFractions(part, `${keyBase}-frac-${index}`));
+  });
+
+  return nodes;
+}
+
 export function renderBoldAndFractions(text: string, keyBase: string): ReactNode[] {
   const segments = text.split(/\*\*(.*?)\*\*/g);
   return segments.map((segment, i) => {
-    const content = renderFractions(segment, `${keyBase}-${i}`);
+    const content = renderLinksAndFractions(segment, `${keyBase}-${i}`);
     if (i % 2 === 1) {
       return (
         <strong key={`${keyBase}-b-${i}`} className="font-semibold text-gray-900">

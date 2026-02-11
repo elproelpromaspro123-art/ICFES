@@ -56,6 +56,7 @@ const areas = [
 export default function InfografiaSection() {
   const [selectedArea, setSelectedArea] = useState<string | null>(null);
   const selected = areas.find((a) => a.name === selectedArea);
+  const pdfSrc = selected?.file ? `${selected.file}#view=FitH` : "";
   const modalRef = useRef<HTMLDivElement>(null);
 
   useFocusTrap(modalRef, Boolean(selected));
@@ -183,7 +184,7 @@ export default function InfografiaSection() {
               <div className="flex-1 bg-gray-50 overflow-auto">
                 <iframe
                   title={`Infografía de ${selected.name}`}
-                  src={selected.file}
+                  src={pdfSrc}
                   className="w-full h-full infografia-frame"
                   allowFullScreen
                 />

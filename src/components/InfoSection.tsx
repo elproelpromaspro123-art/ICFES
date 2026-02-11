@@ -18,6 +18,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 type FeatureCard = {
   icon: typeof BookOpen;
@@ -91,7 +92,7 @@ const tools: ToolItem[] = [
     icon: Search,
     label: "Buscador integrado",
     description:
-      "Filtra preguntas y explicaciones por palabra clave para encontrar exactamente el tema que necesitas repasar.",
+      "Filtra preguntas por palabra clave o número para encontrar exactamente el tema que necesitas repasar.",
     href: "/estudio/matematicas",
   },
   {
@@ -189,9 +190,9 @@ export default function InfoSection() {
           <p className="text-gray-600 max-w-2xl mx-auto text-sm leading-relaxed">
             Un resumen completo de cada herramienta, sección y recurso disponible
             para que aproveches al máximo tu preparación para el{" "}
-            <a href="/#" className="text-icfes-blue font-semibold hover:underline">
+            <Link href="/#" className="text-icfes-blue font-semibold hover:underline">
               ICFES Saber 11°
-            </a>.
+            </Link>.
           </p>
         </motion.div>
 
@@ -224,14 +225,14 @@ export default function InfoSection() {
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {feature.highlights.map((hl) => (
-                        <a
+                        <Link
                           key={hl.text}
                           href={hl.href}
                           className="inline-flex items-center gap-1 text-xs font-medium bg-icfes-blue-lighter text-icfes-blue px-3 py-1.5 rounded-lg hover:bg-icfes-blue hover:text-white transition-colors"
                         >
                           {hl.text}
                           <ArrowRight className="w-3 h-3" />
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
@@ -258,28 +259,28 @@ export default function InfoSection() {
             {tools.map((tool, i) => {
               const Icon = tool.icon;
               return (
-                <motion.a
-                  key={tool.label}
-                  href={tool.href}
-                  custom={i}
-                  variants={fadeUp}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  className="group flex items-start gap-4 bg-white border border-gray-100 rounded-xl p-5 hover:border-icfes-blue hover:shadow-md transition-all"
-                >
-                  <div className="w-10 h-10 rounded-lg bg-icfes-blue-lighter flex items-center justify-center shrink-0 group-hover:bg-icfes-blue transition-colors">
-                    <Icon className="w-5 h-5 text-icfes-blue group-hover:text-white transition-colors" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-sm text-gray-900 mb-1 group-hover:text-icfes-blue transition-colors">
-                      {tool.label}
-                    </h4>
-                    <p className="text-xs text-gray-500 leading-relaxed">
-                      {tool.description}
-                    </p>
-                  </div>
-                </motion.a>
+                <Link key={tool.label} href={tool.href} className="block">
+                  <motion.div
+                    custom={i}
+                    variants={fadeUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    className="group flex items-start gap-4 bg-white border border-gray-100 rounded-xl p-5 hover:border-icfes-blue hover:shadow-md transition-all"
+                  >
+                    <div className="w-10 h-10 rounded-lg bg-icfes-blue-lighter flex items-center justify-center shrink-0 group-hover:bg-icfes-blue transition-colors">
+                      <Icon className="w-5 h-5 text-icfes-blue group-hover:text-white transition-colors" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-sm text-gray-900 mb-1 group-hover:text-icfes-blue transition-colors">
+                        {tool.label}
+                      </h4>
+                      <p className="text-xs text-gray-500 leading-relaxed">
+                        {tool.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                </Link>
               );
             })}
           </div>
@@ -344,27 +345,27 @@ export default function InfoSection() {
               a tu propio ritmo. Elige por dónde quieres comenzar.
             </p>
             <div className="flex flex-wrap justify-center gap-3">
-              <a
+              <Link
                 href="/#simulacros"
                 className="inline-flex items-center gap-2 bg-icfes-yellow text-icfes-blue font-semibold px-5 py-2.5 rounded-lg hover:bg-yellow-400 transition-colors text-sm"
               >
                 <ClipboardList className="w-4 h-4" />
                 Ir a simulacros
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/#estudio"
                 className="inline-flex items-center gap-2 bg-white/15 text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-white/25 transition-colors text-sm border border-white/20"
               >
                 <GraduationCap className="w-4 h-4" />
                 Ir a estudio guiado
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/#infografias"
                 className="inline-flex items-center gap-2 bg-white/15 text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-white/25 transition-colors text-sm border border-white/20"
               >
                 <FileText className="w-4 h-4" />
                 Ver infografías
-              </a>
+              </Link>
             </div>
           </div>
         </motion.div>

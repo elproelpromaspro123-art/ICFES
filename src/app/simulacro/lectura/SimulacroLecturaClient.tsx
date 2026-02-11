@@ -14,7 +14,7 @@ export default function SimulacroLecturaClient() {
     <SimulacroAreaClient
       areaId="lectura"
       areaLabel="Lectura Crítica"
-      areaDescription="49 preguntas verificadas y revisadas del examen Saber 11.°"
+      areaDescription="49 preguntas verificadas y revisadas del examen Saber 11°"
       totalQuestions={49}
       icon={BookOpen}
       iconGradient="from-red-400 to-red-600"

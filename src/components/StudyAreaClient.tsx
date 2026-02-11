@@ -66,7 +66,10 @@ export default function StudyAreaClient({
   const filteredQuestions = useMemo(() => {
     const trimmed = query.trim().toLowerCase();
     if (!trimmed) return questions;
+    const numericMatch = trimmed.match(/\d+/);
+    const numericQuery = numericMatch ? Number(numericMatch[0]) : null;
     return questions.filter((q) => {
+      if (numericQuery !== null && q.id === numericQuery) return true;
       const content = [
         q.text,
         q.explanation,
@@ -165,7 +168,7 @@ export default function StudyAreaClient({
               <input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Buscar en preguntas y explicaciones"
+                placeholder="Buscar por número de pregunta o texto"
                 className="w-full bg-transparent text-sm text-gray-700 outline-none"
                 aria-label="Buscar contenido"
               />
@@ -343,6 +346,5 @@ export default function StudyAreaClient({
     </main>
   );
 }
-
 
 

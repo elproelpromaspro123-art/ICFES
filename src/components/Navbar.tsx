@@ -2,7 +2,15 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { BookOpen, ClipboardList, ExternalLink, Info, Menu, X } from "lucide-react";
+import {
+  BookOpen,
+  ClipboardList,
+  ExternalLink,
+  Info,
+  Menu,
+  MessageSquare,
+  X,
+} from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -11,6 +19,7 @@ const navItems = [
   { href: "/#simulacros", label: "Simulacros", icon: ClipboardList },
   { href: "/#estudio", label: "Estudio", icon: BookOpen },
   { href: "/#informacion", label: "Información", icon: Info },
+  { href: "/#reportes", label: "Reportes", icon: MessageSquare },
 ];
 
 export default function Navbar() {

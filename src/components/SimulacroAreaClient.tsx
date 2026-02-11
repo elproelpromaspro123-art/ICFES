@@ -70,10 +70,7 @@ export default function SimulacroAreaClient({
   const [randomize, setRandomize] = useState(false);
   const [started, setStarted] = useState(false);
   const [showIntro, setShowIntro] = useState(false);
-  const [progressMap, setProgressMap] = useState<
-    Record<number, SimulacroProgress | null>
-  >({});
-  const [history, setHistory] = useState<SimulacroHistoryEntry[]>([]);
+  const [storageVersion, setStorageVersion] = useState(0);
   const [questions, setQuestions] = useState<Question[] | null>(null);
   const introRef = useRef<HTMLDivElement>(null);
 
@@ -96,29 +93,54 @@ export default function SimulacroAreaClient({
     };
   }, [loadQuestions]);
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const nextMap: Record<number, SimulacroProgress | null> = {};
-    for (const mode of modes) {
-      const key = makeProgressKey(areaId, mode.count, randomize);
-      let data = safeParseJSON<SimulacroProgress>(localStorage.getItem(key));
+  const progressMap = useMemo(() => {
+    void storageVersion;
+    if (typeof window === "undefined") return {};
+    try {
+      const nextMap: Record<number, SimulacroProgress | null> = {};
+      for (const mode of modes) {
+        const key = makeProgressKey(areaId, mode.count, randomize);
+        let data = safeParseJSON<SimulacroProgress>(localStorage.getItem(key));
 
-      if (!data && areaId === "matematicas") {
-        const legacyKey = makeLegacyProgressKey(mode.count, randomize);
-        const legacyData = safeParseJSON<SimulacroProgress>(
-          localStorage.getItem(legacyKey)
-        );
-        if (legacyData) {
-          data = { ...legacyData, areaId };
-          localStorage.setItem(key, JSON.stringify(data));
-          localStorage.removeItem(legacyKey);
+        if (!data && areaId === "matematicas") {
+          const legacyKey = makeLegacyProgressKey(mode.count, randomize);
+          const legacyData = safeParseJSON<SimulacroProgress>(
+            localStorage.getItem(legacyKey)
+          );
+          if (legacyData) {
+            data = { ...legacyData, areaId };
+            localStorage.setItem(key, JSON.stringify(data));
+            localStorage.removeItem(legacyKey);
+          }
         }
-      }
 
-      nextMap[mode.count] = data;
+        nextMap[mode.count] = data;
+      }
+      return nextMap;
+    } catch {
+      return {};
     }
-    setProgressMap(nextMap);
-  }, [randomize, modes, areaId]);
+  }, [randomize, modes, areaId, storageVersion]);
+
+  const history = useMemo(() => {
+    void storageVersion;
+    if (typeof window === "undefined") return [];
+    try {
+      const items =
+        safeParseJSON<SimulacroHistoryEntry[]>(
+          localStorage.getItem(HISTORY_KEY)
+        ) ?? [];
+      const normalized = items.map((item) => ({
+        ...item,
+        areaId: item.areaId ?? "matematicas",
+      }));
+      const filtered = normalized.filter((item) => item.areaId === areaId);
+      filtered.sort((a, b) => (a.date > b.date ? -1 : 1));
+      return filtered;
+    } catch {
+      return [];
+    }
+  }, [areaId, storageVersion]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -130,14 +152,11 @@ export default function SimulacroAreaClient({
       ...item,
       areaId: item.areaId ?? "matematicas",
     }));
-    const filtered = normalized.filter((item) => item.areaId === areaId);
-    filtered.sort((a, b) => (a.date > b.date ? -1 : 1));
-    setHistory(filtered);
 
     if (normalized.some((item) => !item.areaId)) {
       localStorage.setItem(HISTORY_KEY, JSON.stringify(normalized.slice(0, 50)));
     }
-  }, [areaId]);
+  }, [areaId, storageVersion]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -160,7 +179,7 @@ export default function SimulacroAreaClient({
   const clearProgress = (count: number) => {
     if (typeof window === "undefined") return;
     localStorage.removeItem(makeProgressKey(areaId, count, randomize));
-    setProgressMap((prev) => ({ ...prev, [count]: null }));
+    setStorageVersion((prev) => prev + 1);
   };
 
   const selectedProgress = selectedMode ? progressMap[selectedMode] : null;
@@ -178,6 +197,7 @@ export default function SimulacroAreaClient({
 
     return (
       <SimulacroExam
+        key={`${areaId}-${selectedMode}-${randomize}`}
         questionCount={selectedMode}
         randomize={randomize}
         questions={questions}

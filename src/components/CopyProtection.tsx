@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const EDITABLE_SELECTOR =
   "input, textarea, select, [contenteditable='true']";
@@ -11,15 +11,7 @@ function isEditableTarget(target: EventTarget | null): boolean {
 }
 
 export default function CopyProtection() {
-  const [isClient, setIsClient] = useState(false);
-
   useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  useEffect(() => {
-    if (!isClient) return;
-
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || window.location.href;
     const attribution = `\n\nFuente: ${siteUrl}`;
 
@@ -29,8 +21,16 @@ export default function CopyProtection() {
       const selection = window.getSelection()?.toString();
       if (!selection) return;
 
-      event.preventDefault();
-      event.clipboardData?.setData("text/plain", `${selection}${attribution}`);
+      const text = `${selection}${attribution}`;
+      if (event.clipboardData) {
+        event.preventDefault();
+        event.clipboardData.setData("text/plain", text);
+        return;
+      }
+
+      if (navigator.clipboard?.writeText) {
+        navigator.clipboard.writeText(text).catch(() => {});
+      }
     };
 
     const handleDragStart = (event: DragEvent) => {
@@ -48,7 +48,7 @@ export default function CopyProtection() {
       document.removeEventListener("copy", handleCopy);
       document.removeEventListener("dragstart", handleDragStart);
     };
-  }, [isClient]);
+  }, []);
 
   return null;
 }

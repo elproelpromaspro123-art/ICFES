@@ -143,6 +143,14 @@ html {
   line-height: 1.75;
 }
 
+.formatted-text a {
+  color: var(--icfes-blue);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
 .formatted-paragraph .fraction {
   margin: 0 0.05em;
 }
@@ -168,7 +176,8 @@ html {
 #infografias,
 #simulacros,
 #estudio,
-#informacion {
+#informacion,
+#reportes {
   scroll-margin-top: 90px;
 }
 
@@ -197,4 +206,3 @@ html {
   background-color: #fffdf6;
   border-color: #e7d9c8;
 }
-
