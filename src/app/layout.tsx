@@ -24,9 +24,9 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase,
   manifest: "/manifest.json",
-  title: "Prepárate para el ICFES Saber 11 | Práctica Gratuita",
+  title: "Prepárate para el ICFES Saber 11 | Práctica Gratuita 2026",
   description:
-    "Proyecto educativo independiente y gratuito para prepararte para el examen ICFES Saber 11. Simulacros, infografías y material recopilado de fuentes públicas. No afiliado con el ICFES.",
+    "Proyecto educativo independiente y gratuito para prepararte para el examen ICFES Saber 11. Simulacros, infografías y material recopilado de fuentes públicas. Actualizado 2026. No afiliado con el ICFES.",
   keywords: [
     "ICFES",
     "Saber 11",
@@ -50,9 +50,9 @@ export const metadata: Metadata = {
     apple: "/favicon.png",
   },
   openGraph: {
-    title: "Prepárate para el ICFES Saber 11 | Práctica Gratuita",
+    title: "Prepárate para el ICFES Saber 11 | Práctica Gratuita 2026",
     description:
-      "Proyecto educativo independiente y gratuito para prepararte para el examen ICFES Saber 11. Simulacros, infografías y material recopilado de fuentes públicas.",
+      "Proyecto educativo independiente y gratuito para prepararte para el examen ICFES Saber 11. Simulacros, infografías y material recopilado de fuentes públicas. Actualizado febrero 2026.",
     type: "website",
     locale: "es_CO",
     siteName: "Prepárate ICFES",
@@ -68,9 +68,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Prepárate para el ICFES Saber 11",
+    title: "Prepárate para el ICFES Saber 11 2026",
     description:
-      "Simulacros gratuitos e infografías para prepararte para el Saber 11. Proyecto educativo independiente.",
+      "Simulacros gratuitos e infografías para prepararte para el Saber 11. Proyecto educativo independiente. Actualizado 2026.",
     images: ["/og.png"],
   },
   robots: {
@@ -95,6 +95,7 @@ export default function RootLayout({
     <html lang="es">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        suppressHydrationWarning
       >
         {children}
         <CopyProtection />
