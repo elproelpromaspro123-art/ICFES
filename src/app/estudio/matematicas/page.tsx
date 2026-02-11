@@ -15,6 +15,14 @@ export const metadata: Metadata = {
     description:
       "Repasa matemáticas con preguntas reales y explicación paso a paso.",
     url: `${siteUrl}/estudio/matematicas`,
+    images: [{ url: "/og.png", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Estudio de Matemáticas | Prepárate ICFES",
+    description:
+      "Repasa matemáticas con preguntas reales y explicación paso a paso.",
+    images: ["/og.png"],
   },
 };
 

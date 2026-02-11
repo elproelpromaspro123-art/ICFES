@@ -24,9 +24,9 @@ export const studyGuides: Record<string, StudyGuide> = {
         bullets: [
           "Porcentaje: valor final = valor inicial × (1 + p/100)",
           "Proporcionalidad directa e inversa (regla de tres)",
-          "Áreas: triángulo A = (b × h) / 2, rectángulo A = b × h, círculo A = π × r²",
-          "Volúmenes: prisma/caja V = A de base × h, cilindro V = π × r² × h, esfera V = (4/3) × π × r³",
-          "Probabilidad: P = casos favorables / casos posibles",
+          "Áreas: triángulo A = b×h/2, rectángulo A = b × h, círculo A = π × r²",
+          "Volúmenes: prisma o caja V = A de base × h, cilindro V = π × r² × h, esfera V = 4/3 × π × r³",
+          "Probabilidad: P = casos favorables/casos posibles",
         ],
       },
       {

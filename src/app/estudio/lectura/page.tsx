@@ -15,6 +15,14 @@ export const metadata: Metadata = {
     description:
       "Comprende textos y argumentos con explicaciones claras.",
     url: `${siteUrl}/estudio/lectura`,
+    images: [{ url: "/og.png", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Estudio de Lectura Crítica | Prepárate ICFES",
+    description:
+      "Comprende textos y argumentos con explicaciones claras.",
+    images: ["/og.png"],
   },
 };
 

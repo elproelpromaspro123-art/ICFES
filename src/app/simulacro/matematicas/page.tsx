@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import SimulacroMatematicasClient from "./SimulacroMatematicasClient";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://icfes2026.vercel.app";
@@ -15,6 +15,14 @@ export const metadata: Metadata = {
     description:
       "50 preguntas verificadas de matemáticas del Saber 11.°. Practica gratis.",
     url: `${siteUrl}/simulacro/matematicas`,
+    images: [{ url: "/og.png", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Simulacro de Matemáticas | Prepárate ICFES",
+    description:
+      "50 preguntas verificadas de matemáticas del Saber 11.°. Practica gratis.",
+    images: ["/og.png"],
   },
 };
 

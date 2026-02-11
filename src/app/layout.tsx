@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import CopyProtection from "@/components/CopyProtection";
+import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -16,8 +17,13 @@ const geistMono = Geist_Mono({
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://icfes2026.vercel.app";
 const metadataBase = siteUrl ? new URL(siteUrl) : undefined;
 
+export const viewport: Viewport = {
+  themeColor: "#003b71",
+};
+
 export const metadata: Metadata = {
   metadataBase,
+  manifest: "/manifest.json",
   title: "Prepárate para el ICFES Saber 11 | Práctica Gratuita",
   description:
     "Proyecto educativo independiente y gratuito para prepararte para el examen ICFES Saber 11. Simulacros, infografías y material recopilado de fuentes públicas. No afiliado con el ICFES.",
@@ -90,8 +96,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <CopyProtection />
         {children}
+        <CopyProtection />
+        <ServiceWorkerRegistration />
       </body>
     </html>
   );

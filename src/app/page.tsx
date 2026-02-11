@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import InfografiaSection from "@/components/InfografiaSection";
 import SimulacroSection from "@/components/SimulacroSection";
 import StudySection from "@/components/StudySection";
+import InfoSection from "@/components/InfoSection";
 import Footer from "@/components/Footer";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://icfes2026.vercel.app";
@@ -31,9 +32,10 @@ export default function Home() {
       />
       <Navbar />
       <Hero />
-      <InfografiaSection />
-      <SimulacroSection />
       <StudySection />
+      <SimulacroSection />
+      <InfografiaSection />
+      <InfoSection />
       <Footer />
     </main>
   );

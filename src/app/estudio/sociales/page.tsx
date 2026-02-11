@@ -15,6 +15,14 @@ export const metadata: Metadata = {
     description:
       "Analiza ciudadanía, historia y sociedad con apoyo guiado.",
     url: `${siteUrl}/estudio/sociales`,
+    images: [{ url: "/og.png", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Estudio de Sociales | Prepárate ICFES",
+    description:
+      "Analiza ciudadanía, historia y sociedad con apoyo guiado.",
+    images: ["/og.png"],
   },
 };
 

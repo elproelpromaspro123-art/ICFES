@@ -1,7 +1,7 @@
 import { type ReactNode } from "react";
 
 export const fractionRegex =
-  /([A-Za-zÁÉÍÓÚÑáéíóúñ0-9().,°v·×÷+^p?\-]+)\s*\/\s*([A-Za-zÁÉÍÓÚÑáéíóúñ0-9().,°v·×÷+^p?\-]+)/g;
+  /([A-Za-zÁÉÍÓÚÑáéíóúñ0-9.,°v·×÷+^p?\-]+)\s*\/\s*([A-Za-zÁÉÍÓÚÑáéíóúñ0-9.,°v·×÷+^p?\-]+)/g;
 
 export function applyAutoBold(line: string): string {
   if (line.includes("**")) return line;
@@ -108,10 +108,10 @@ export function renderFractions(text: string, keyBase: string): ReactNode[] {
       parts.push(processed.slice(lastIndex, match.index));
     }
     parts.push(
-      <span className="fraction" key={`${keyBase}-frac-${count}`}>
-        <span className="fraction-top">{match[1]}</span>
-        <span className="fraction-bar" />
-        <span className="fraction-bottom">{match[2]}</span>
+      <span className="fraction" key={`${keyBase}-frac-${count}`} role="math" aria-label={`${match[1]} sobre ${match[2]}`}>
+        <span className="fraction-top" aria-hidden="true">{match[1]}</span>
+        <span className="fraction-bar" aria-hidden="true" />
+        <span className="fraction-bottom" aria-hidden="true">{match[2]}</span>
       </span>
     );
     lastIndex = match.index + match[0].length;
