@@ -32,10 +32,10 @@ export default function Home() {
       />
       <Navbar />
       <Hero />
+      <InfoSection />
+      <InfografiaSection />
       <StudySection />
       <SimulacroSection />
-      <InfografiaSection />
-      <InfoSection />
       <Footer />
     </main>
   );
