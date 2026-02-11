@@ -28,13 +28,26 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
 
+  const url = new URL(event.request.url);
+  // No cachear recursos con esquemas no soportados (chrome-extension, etc)
+  const unsupportedSchemes = ["chrome-extension", "chrome", "moz-extension"];
+  if (unsupportedSchemes.some(scheme => url.protocol.startsWith(scheme))) {
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request).then((cached) => {
       const fetchPromise = fetch(event.request)
         .then((response) => {
           if (response && response.status === 200 && response.type === "basic") {
             const clone = response.clone();
-            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+            caches.open(CACHE_NAME).then((cache) => {
+              try {
+                cache.put(event.request, clone);
+              } catch (error) {
+                console.warn("Failed to cache response:", error);
+              }
+            });
           }
           return response;
         })
